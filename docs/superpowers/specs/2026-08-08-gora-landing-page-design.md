@@ -322,7 +322,7 @@ Oversized outline wordmark, `repeat(auto-fit, minmax(160px, 1fr))` link columns,
 
 | Route | Purpose |
 |---|---|
-| `/contact` | Editorial contact form in the same system. Name, email, message. Client validation, honest error and success states, no dark patterns. |
+| `/contact` | Editorial contact form in the same system. Name, email, message. **No backend is in scope.** The form validates client-side, then submits via a `mailto:` composition to the address in `src/data/site.ts`. The button label states this plainly (`Open in your mail app`) so the behaviour is never a surprise. Swapping in a real POST endpoint later touches one handler. |
 | `/privacy` | Minimal but real privacy policy. **App Store review requires a working public URL.** |
 | `/terms` | Minimal but real terms. Same reason. |
 
@@ -437,11 +437,16 @@ src/
 Generated via the **codex bridge** (`gpt-image-bridge` skill) exclusively. Higgsfield
 is not used for any asset in this project.
 
-| Asset | Spec |
-|---|---|
-| 6 activity photographs | square, warm natural light, real people mid-activity — surf, aurora, pottery, hike, shared dinner, live music |
-| App icon | Gora mark, orange on paper |
-| OG card | 1200×630 |
+Every generated image must have a section that actually consumes it. No orphan assets.
+
+| Asset | Consumed by | Spec |
+|---|---|---|
+| 6 activity photographs | §4.6 `BucketIndex` — each row reveals its image on hover/focus-within, 180ms opacity, positioned right of the rail. Three of the six are reused inside the §4.4 phone screens as list-item thumbnails. | square 1:1, warm natural light, real people mid-activity, shot from a participant's eye level rather than a stock-photo hero angle — surf, aurora, pottery, hike, shared dinner, live music |
+| App icon | §4.0 header wordmark, favicon, `apple-touch-icon` | Gora mark, `--orange` on `--paper` |
+| OG card | `layout.tsx` metadata | 1200×630 |
+
+On touch devices the `BucketIndex` hover-reveal has no trigger, so the image column is
+hidden below 960px rather than left dangling — the rail is fully legible without it.
 
 If an asset is missing at build time, render a **neutral placeholder showing the
 filename and intended crop.** Never silently substitute a different image.

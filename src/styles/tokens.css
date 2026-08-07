@@ -1,0 +1,33 @@
+/* Design tokens — single source of truth. Zero raw hex outside this file. */
+
+:root {
+  /* Color */
+  --paper: #fbf7f0; /* warm ground, majority of the page */
+  --paper-sunk: #f3ede2; /* recessed panels, input wells */
+  --ink: #16130f; /* body + display type */
+  --ink-muted: #6b6259; /* secondary copy, mono labels */
+
+  --orange: #ff5c24; /* THE PLAN — fills, locked state */
+  --orange-deep: #c63d0b; /* orange as text on paper */
+  --sky: #38b6f5; /* SOMEDAY — unplanned cards */
+  --sky-deep: #0a6fa8; /* sky as text on paper */
+
+  --night: #0b1520; /* deep blue-black contrast sections */
+  --rule: rgba(22, 19, 15, 0.14);
+  --rule-invert: rgba(251, 247, 240, 0.16);
+  --focus: #0a6fa8;
+
+  /* Layout */
+  --content-max: 1440px;
+  --page-gutter: clamp(20px, 4vw, 72px);
+  --header-height: 72px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* reveals, settles */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* controls, hovers */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* lock confirmation ONLY */
+
+  --dur-fast: 160ms; /* control response */
+  --dur-med: 520ms; /* standard reveal */
+  --dur-slow: 1100ms; /* large settle */
+}

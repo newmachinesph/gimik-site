@@ -30,4 +30,13 @@
   --dur-fast: 160ms; /* control response */
   --dur-med: 520ms; /* standard reveal */
   --dur-slow: 1100ms; /* large settle */
+
+  /* Phone chassis (spec §6) */
+  --phone-rail: #1a1a1e; /* titanium rail */
+  --shadow-phone:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.6),
+    0 0 0 10px var(--phone-rail),
+    0 0 0 11px rgba(255, 255, 255, 0.06),
+    0 0 60px rgba(0, 0, 0, 0.18);
 }

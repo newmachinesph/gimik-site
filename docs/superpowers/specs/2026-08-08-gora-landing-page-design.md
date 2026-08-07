@@ -434,16 +434,27 @@ src/
 
 ## 11. Assets
 
-Generated via the **codex bridge** (`gpt-image-bridge` skill) exclusively. Higgsfield
-is not used for any asset in this project.
+The six activity photographs are **user-supplied** and already live in `public/`
+(landscape, ~3:2, editorial film look). If any *additional* image is ever generated for
+this project, it goes through the **codex bridge** (`gpt-image-bridge` skill)
+exclusively. Higgsfield is not used for any asset in this project.
 
-Every generated image must have a section that actually consumes it. No orphan assets.
+Every image must have a section that actually consumes it. No orphan assets.
 
-| Asset | Consumed by | Spec |
+| Asset | File | Consumed by |
 |---|---|---|
-| 6 activity photographs | §4.6 `BucketIndex` — each row reveals its image on hover/focus-within, 180ms opacity, positioned right of the rail. Three of the six are reused inside the §4.4 phone screens as list-item thumbnails. | square 1:1, warm natural light, real people mid-activity, shot from a participant's eye level rather than a stock-photo hero angle — surf, aurora, pottery, hike, shared dinner, live music |
-| App icon | §4.0 header wordmark, favicon, `apple-touch-icon` | Gora mark, `--orange` on `--paper` |
-| OG card | `layout.tsx` metadata | 1200×630 |
+| Surf barrel | `public/surf.jpg` | §4.6 row *Learn to surf*; reused as §4.4 phone thumbnail |
+| Aurora over fjord cabin | `public/aurora.jpg` | §4.6 row *See the northern lights*; reused as §4.4 phone thumbnail |
+| Balloons over Cappadocia | `public/balloons.jpg` | §4.6 row *Fly over Cappadocia at sunrise* |
+| Night street-food market | `public/market.jpg` | §4.6 row *Eat through a night market*; reused as §4.4 phone thumbnail |
+| Freediver over reef | `public/reef.jpg` | §4.6 row *Freedive a coral reef* |
+| Summit at sunset | `public/summit.jpg` | §4.6 row *Catch a summit sunset* |
+| App icon / favicon | authored as inline SVG in code (vector mark, `--orange` on `--paper`) | §4.0 header wordmark, favicon, `apple-touch-icon` |
+| OG card | generated at build via `next/og` `ImageResponse` (code, not AI generation) | `layout.tsx` metadata, 1200×630 |
+
+§4.6 rows are bound to these photos — the bucket list reads: Learn to surf · See the
+northern lights · Fly over Cappadocia at sunrise · Eat through a night market ·
+Freedive a coral reef · Catch a summit sunset.
 
 On touch devices the `BucketIndex` hover-reveal has no trigger, so the image column is
 hidden below 960px rather than left dangling — the rail is fully legible without it.

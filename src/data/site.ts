@@ -1,3 +1,9 @@
+export const NAV_LINKS = [
+  { href: "#how", label: "How it works" },
+  { href: "#list", label: "Bucket list" },
+  { href: "#modes", label: "Modes" },
+] as const;
+
 export const site = {
   name: "Gora",
   url: "https://getgora.app",

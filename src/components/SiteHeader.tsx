@@ -3,7 +3,8 @@
 import { motion, useMotionValueEvent } from "motion/react";
 import { useRef, useState } from "react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
-import { NavDrawer, NAV_LINKS } from "./NavDrawer";
+import { NavDrawer } from "./NavDrawer";
+import { NAV_LINKS } from "@/data/site";
 
 /** Gora mark: a date landing on the calendar line. Reused as footer mark. */
 export function GoraMark({ size = 28 }: { size?: number }) {

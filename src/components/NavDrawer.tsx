@@ -3,12 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, type RefObject } from "react";
 import { StoreButtons } from "./StoreButtons";
-
-export const NAV_LINKS = [
-  { href: "#how", label: "How it works" },
-  { href: "#list", label: "Bucket list" },
-  { href: "#modes", label: "Modes" },
-] as const;
+import { NAV_LINKS } from "@/data/site";
 
 export function NavDrawer({
   open,

@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { NAV_LINKS } from "./NavDrawer";
-import { site } from "@/data/site";
+import { NAV_LINKS, site } from "@/data/site";
 
 const COLUMNS = [
   {

@@ -73,7 +73,12 @@ export function useDragToSchedule(initial: SomedayCard[], days: DayCell[]) {
 
   const startDrag = useCallback(
     (id: string, e: React.PointerEvent) => {
-      e.currentTarget.setPointerCapture(e.pointerId);
+      try {
+        e.currentTarget.setPointerCapture(e.pointerId);
+      } catch {
+        // Synthetic or already-released pointers can't be captured; the drag
+        // still works, it just loses capture outside the element.
+      }
       const rect = e.currentTarget.getBoundingClientRect();
       grabPoint.current = { x: e.clientX, y: e.clientY };
       cardCenter.current = {

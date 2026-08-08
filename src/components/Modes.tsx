@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useRef, useState } from "react";
 import { modes, type Mode } from "@/data/modes";
 import { Reveal } from "./Reveal";
+import { SectionRule } from "./SectionRule";
 
 /** Solo · Duo · Group on night ground — the single hard contrast break. */
 export function Modes() {
@@ -31,16 +32,20 @@ export function Modes() {
   return (
     <section
       id="modes"
-      className="below-fold bg-night text-paper"
+      className="below-fold relative overflow-hidden bg-night text-paper"
       style={{ paddingBlock: "clamp(112px, 14vw, 192px)" }}
     >
-      <div className="container-page">
+      {/* Depth: one static sky glow in the night — someday light in the dark */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-[10%] -top-[20%] h-[720px] w-[720px] rounded-full opacity-[0.12]"
+        style={{ background: "radial-gradient(closest-side, var(--sky), transparent 70%)" }}
+      />
+      <div className="container-page relative">
+        <SectionRule index="04" label="Three ways to go" tone="night" />
         <Reveal>
-          <p className="mono-label" style={{ color: "var(--sky)" }}>
-            Three ways to go
-          </p>
           <h2
-            className="display-head mt-4 max-w-[18ch] font-semibold"
+            className="display-head max-w-[18ch] font-semibold"
             style={{ fontSize: "clamp(2.25rem, 5vw, 4.5rem)" }}
           >
             Alone counts. Two counts. Everyone counts.

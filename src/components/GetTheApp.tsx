@@ -12,13 +12,21 @@ export function GetTheApp() {
       <div className="container-page">
         <Reveal>
           <div
-            className="bg-orange text-ink"
+            className="relative overflow-hidden bg-orange text-ink"
             style={{
               borderRadius: 32,
               padding: "clamp(32px, 4vw, 64px)",
             }}
           >
-            <p className="mono-label">Get the app</p>
+            {/* Ghost serif "sometime" — the word the card retires */}
+            <span
+              aria-hidden="true"
+              className="serif-accent pointer-events-none absolute -right-8 -top-10 select-none opacity-[0.14]"
+              style={{ fontSize: "clamp(8rem, 22vw, 20rem)", lineHeight: 1 }}
+            >
+              sometime
+            </span>
+            <p className="mono-label relative">Get the app</p>
             <h2
               className="display-head mt-5 max-w-[12ch] font-semibold"
               style={{ fontSize: "clamp(2.5rem, 6.5vw, 5.5rem)" }}

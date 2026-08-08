@@ -20,6 +20,7 @@ export function NavDrawer({
   useEffect(() => {
     if (!open) return;
     const panel = panelRef.current;
+    const trigger = triggerRef.current;
     if (!panel) return;
 
     const focusables = () =>
@@ -50,7 +51,7 @@ export function NavDrawer({
     document.addEventListener("keydown", onKeyDown);
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      triggerRef.current?.focus();
+      trigger?.focus();
     };
   }, [open, onClose, triggerRef]);
 

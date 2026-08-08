@@ -65,7 +65,7 @@ export function Locked() {
           <span className="min-w-0 flex-1 truncate text-[15px] font-medium">
             See the northern lights
           </span>
-          <span className="mono-label shrink-0 rounded-full bg-sky/20 px-2.5 py-1 text-[9px] text-sky-deep">
+          <span className="mono-label shrink-0 rounded-full border border-sky/40 bg-paper px-2.5 py-1 text-[9px] text-sky-deep">
             someday
           </span>
         </div>

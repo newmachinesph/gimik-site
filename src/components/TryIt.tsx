@@ -8,6 +8,7 @@ import {
   type SomedayCard,
 } from "@/hooks/useDragToSchedule";
 import { Reveal } from "./Reveal";
+import { SectionRule } from "./SectionRule";
 
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 const EASE_SPRING = [0.34, 1.56, 0.64, 1] as const; // the ONLY spring on the page
@@ -77,10 +78,10 @@ export function TryIt() {
       style={{ paddingBlock: "clamp(88px, 10vw, 152px)" }}
     >
       <div className="container-page">
+        <SectionRule index="02" label="Try it" />
         <Reveal>
-          <p className="mono-label text-orange-deep">Try it</p>
           <h2
-            className="display-head mt-4 max-w-[18ch] font-semibold"
+            className="display-head max-w-[18ch] font-semibold"
             style={{ fontSize: "clamp(2.25rem, 5vw, 4.5rem)" }}
           >
             Drag a{" "}
@@ -118,7 +119,6 @@ export function TryIt() {
                     }}
                     aria-haspopup="listbox"
                     aria-expanded={isOpen}
-                    aria-label={`${card.title} — someday. Press Enter to pick a day.`}
                     className={`block min-h-[112px] w-[228px] cursor-grab rounded-2xl bg-sky p-5 text-left text-ink ${
                       isDragging ? "z-50 cursor-grabbing shadow-2xl" : ""
                     }`}
@@ -157,6 +157,7 @@ export function TryIt() {
                     <span className="serif-accent mt-2 block text-[26px] leading-tight">
                       {card.title}
                     </span>
+                    <span className="sr-only">— press Enter to pick a day</span>
                   </motion.button>
 
                   {isOpen && (
@@ -215,7 +216,9 @@ export function TryIt() {
                 className={`min-h-[150px] snap-start rounded-2xl border p-3 transition-colors duration-[160ms] ${
                   isTarget
                     ? "border-orange bg-orange/10"
-                    : "border-rule bg-paper"
+                    : drag.dragging
+                      ? "border-dashed border-sky-deep/40 bg-paper"
+                      : "border-rule bg-paper"
                 }`}
               >
                 <p className="mono-label text-[10px] text-ink-muted">

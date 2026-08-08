@@ -8,6 +8,7 @@ import { SomedayList } from "./phone/screens/SomedayList";
 import { Matching } from "./phone/screens/Matching";
 import { Locked } from "./phone/screens/Locked";
 import { Reveal } from "./Reveal";
+import { SectionRule } from "./SectionRule";
 
 const SCREENS: Record<Chapter["id"], () => ReactNode> = {
   add: () => <SomedayList />,
@@ -65,10 +66,10 @@ export function HowItWorks() {
       style={{ paddingBlock: "clamp(96px, 12vw, 176px)" }}
     >
       <div className="container-page">
+        <SectionRule index="01" label="How it works" />
         <Reveal>
-          <p className="mono-label text-orange-deep">How it works</p>
           <h2
-            className="display-head mt-4 max-w-[16ch] font-semibold"
+            className="display-head max-w-[16ch] font-semibold"
             style={{ fontSize: "clamp(2.25rem, 5vw, 4.5rem)" }}
           >
             From <span className="serif-accent font-normal text-sky-deep">someday</span>{" "}

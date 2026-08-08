@@ -28,7 +28,8 @@ function Word({
   // Word i finishes turning on at (i+1)/total, over a window of ~2 words.
   const start = index / total;
   const end = (index + 1) / total;
-  const opacity = useTransform(progress, [start, end], [0.18, 1]);
+  // 0.5 floor keeps the un-revealed words ≥3:1 on paper at display size (AA large text).
+  const opacity = useTransform(progress, [start, end], [0.5, 1]);
   return (
     <motion.span aria-hidden="true" style={{ opacity }}>
       {word}{" "}
@@ -52,7 +53,6 @@ export function Manifesto() {
     >
       <div className="container-page">
         <p
-          aria-label={SENTENCE}
           className="mx-auto max-w-[24ch] text-center font-medium"
           style={{
             fontSize: "clamp(2rem, 4.5vw, 4rem)",
@@ -60,17 +60,24 @@ export function Manifesto() {
             letterSpacing: "-0.015em",
           }}
         >
-          {reduced
-            ? SENTENCE
-            : WORDS.map((word, i) => (
-                <Word
-                  key={i}
-                  word={word}
-                  index={i}
-                  total={WORDS.length}
-                  progress={scrollYProgress}
-                />
-              ))}
+          {reduced ? (
+            SENTENCE
+          ) : (
+            <>
+              <span className="sr-only">{SENTENCE}</span>
+              <span aria-hidden="true">
+                {WORDS.map((word, i) => (
+                  <Word
+                    key={i}
+                    word={word}
+                    index={i}
+                    total={WORDS.length}
+                    progress={scrollYProgress}
+                  />
+                ))}
+              </span>
+            </>
+          )}
         </p>
       </div>
     </section>

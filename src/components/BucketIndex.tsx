@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { bucketItems } from "@/data/bucket";
 import { Reveal } from "./Reveal";
+import { SectionRule } from "./SectionRule";
 
 /** The bucket list as a numbered editorial ledger — a table, not a card grid. */
 export function BucketIndex() {
@@ -16,10 +17,10 @@ export function BucketIndex() {
       style={{ paddingBlock: "clamp(104px, 13vw, 176px)" }}
     >
       <div className="container-page">
+        <SectionRule index="03" label="The list" />
         <Reveal>
-          <p className="mono-label text-orange-deep">The list</p>
           <h2
-            className="display-head mt-4 max-w-[16ch] font-semibold"
+            className="display-head max-w-[16ch] font-semibold"
             style={{ fontSize: "clamp(2.25rem, 5vw, 4.5rem)" }}
           >
             Everything you keep meaning to do.
@@ -67,12 +68,16 @@ export function BucketIndex() {
                   style={{ opacity: hovered === i ? 1 : 0 }}
                 />
               ))}
-              {hovered === null && (
-                <div className="flex h-full w-full items-center justify-center rounded-2xl border border-rule">
+              {hovered === null ? (
+                <div className="flex h-full w-full items-center justify-center rounded-2xl border border-dashed border-rule">
                   <span className="mono-label text-ink-muted">
                     Hover the list
                   </span>
                 </div>
+              ) : (
+                <p className="mono-label absolute -bottom-8 left-0 text-ink-muted">
+                  N°{bucketItems[hovered].number} — {bucketItems[hovered].title}
+                </p>
               )}
             </div>
           </div>

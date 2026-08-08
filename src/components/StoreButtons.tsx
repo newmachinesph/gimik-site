@@ -23,10 +23,10 @@ function QrPlaceholder() {
   return (
     <svg
       aria-hidden="true"
-      width="88"
-      height="88"
+      width="92"
+      height="92"
       viewBox="0 0 15 15"
-      className="hidden shrink-0 rounded-lg bg-paper p-1 min-[960px]:block"
+      className="hidden shrink-0 rounded-xl border border-rule bg-paper p-2 min-[960px]:block"
     >
       {QR_CELLS.flatMap((row, y) =>
         row.split("").map((cell, x) =>
@@ -51,11 +51,11 @@ function StoreBadge({
   return (
     <a
       href={href}
-      aria-label={`${store} — placeholder link, coming soon`}
       className="flex min-h-[52px] min-w-[160px] flex-col justify-center rounded-full bg-ink px-7 py-2.5 text-paper transition-transform duration-[160ms] hover:-translate-y-0.5 active:translate-y-0"
     >
       <span className="mono-label block text-[10px] opacity-70">{eyebrow}</span>
       <span className="block text-[17px] font-semibold leading-tight">{store}</span>
+      <span className="sr-only">(placeholder link — coming soon)</span>
     </a>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import { PhoneFrame } from "./phone/PhoneFrame";
 import { SomedayList } from "./phone/screens/SomedayList";
@@ -63,7 +63,16 @@ export function Hero() {
       className="relative flex flex-col justify-end"
       style={{ minHeight: "100svh", paddingTop: "var(--header-height)" }}
     >
-      <div className="container-page grid w-full grid-cols-1 items-end gap-x-8 pb-12 min-[960px]:grid-cols-12 min-[960px]:pb-0">
+      {/* Atmosphere: one static sky wash behind the phone — the "someday" zone.
+          Clipped in its own layer so the phone can still bleed past the fold. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="absolute -right-[12%] top-[14%] h-[680px] w-[680px] rounded-full opacity-25"
+          style={{ background: "radial-gradient(closest-side, var(--sky), transparent 72%)" }}
+        />
+        <div className="absolute inset-x-0 bottom-0 border-b border-rule" />
+      </div>
+      <div className="container-page relative grid w-full grid-cols-1 items-end gap-x-8 pb-12 min-[960px]:grid-cols-12 min-[960px]:pb-0">
         {/* Copy — lower-left, columns 1–8 */}
         <div className="min-[960px]:col-span-8 min-[960px]:pb-16">
           <motion.p
@@ -72,13 +81,14 @@ export function Hero() {
             animate={ready ? { opacity: 1 } : undefined}
             transition={{ duration: 0.52, ease: EASE_OUT, delay: 0.12 }}
           >
+            <span className="mr-4 inline-block h-px w-6 translate-y-[-4px] bg-orange" />
             Gora — plans with people you like
           </motion.p>
 
           <h1
             className="mt-6 font-semibold"
             style={{
-              fontSize: "clamp(3rem, 11vw, 9rem)",
+              fontSize: "clamp(3rem, 10vw, 8rem)",
               lineHeight: 0.88,
               letterSpacing: "-0.035em",
               minWidth: 0,
@@ -92,33 +102,38 @@ export function Hero() {
               <span className="flex flex-wrap items-baseline gap-x-[0.25em]">
                 that
                 {/* The concept, performed: sometime → a real date */}
+                {/* Both spans stay mounted in one stacked grid cell, so the
+                    slot's width never changes — no layout shift on swap. */}
                 <span
-                  className="relative inline-grid align-baseline"
+                  className="relative inline-grid items-center align-baseline"
                   aria-label="sometime — now a real date"
                 >
-                  <AnimatePresence mode="wait" initial={false}>
-                    {!swapped ? (
-                      <motion.span
-                        key="someday"
-                        className="serif-accent text-sky-deep [grid-area:1/1]"
-                        exit={reduced ? { opacity: 0 } : { opacity: 0, y: -14 }}
-                        transition={{ duration: reduced ? 0.15 : 0.26, ease: EASE_OUT }}
-                      >
-                        sometime
-                      </motion.span>
-                    ) : (
-                      <motion.span
-                        key="date"
-                        className="self-center whitespace-nowrap font-mono font-medium uppercase text-orange-deep [grid-area:1/1]"
-                        style={{ fontSize: "0.4em", letterSpacing: "0.06em" }}
-                        initial={reduced ? { opacity: 0 } : { opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: reduced ? 0.15 : 0.52, ease: EASE_OUT }}
-                      >
-                        SAT 14 MAR · 9:00
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
+                  <motion.span
+                    className="serif-accent text-sky-deep [grid-area:1/1]"
+                    animate={
+                      swapped
+                        ? reduced
+                          ? { opacity: 0 }
+                          : { opacity: 0, y: -14 }
+                        : { opacity: 1, y: 0 }
+                    }
+                    transition={{ duration: reduced ? 0.15 : 0.26, ease: EASE_OUT }}
+                  >
+                    sometime
+                  </motion.span>
+                  <motion.span
+                    className="justify-self-start self-center whitespace-nowrap font-mono font-medium uppercase text-orange-deep [grid-area:1/1]"
+                    style={{ fontSize: "0.38em", letterSpacing: "0.06em" }}
+                    initial={{ opacity: 0, y: reduced ? 0 : 18 }}
+                    animate={
+                      swapped
+                        ? { opacity: 1, y: 0 }
+                        : { opacity: 0, y: reduced ? 0 : 18 }
+                    }
+                    transition={{ duration: reduced ? 0.15 : 0.52, ease: EASE_OUT }}
+                  >
+                    SAT 14 MAR · 9:00
+                  </motion.span>
                 </span>
               </span>
             </TitleLine>

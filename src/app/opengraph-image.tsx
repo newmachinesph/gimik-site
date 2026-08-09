@@ -1,4 +1,14 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
+
+/**
+ * The real mark, inlined. Satori cannot fetch a relative URL while rendering,
+ * so the PNG is read off disk at build time and embedded as a data URI.
+ */
+const MARK = `data:image/png;base64,${readFileSync(
+  join(process.cwd(), "public/brand/gora-mark.png"),
+).toString("base64")}`;
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -82,26 +92,10 @@ export default function OgImage() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-            <div
-              style={{
-                width: 56,
-                height: 56,
-                borderRadius: 16,
-                background: "#FF5C24",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <div
-                style={{
-                  width: 18,
-                  height: 18,
-                  borderRadius: 999,
-                  background: "#FBF7F0",
-                }}
-              />
-            </div>
+            {/* 76, not 56: the PNG carries transparent canvas around the pin,
+                so a 56 box renders a ~34px mark and reads undersized next to
+                the wordmark. */}
+            <img src={MARK} width={76} height={76} alt="" />
             <span style={{ fontSize: 40, fontWeight: 700, letterSpacing: -1 }}>
               Gora
             </span>

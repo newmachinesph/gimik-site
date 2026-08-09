@@ -57,12 +57,16 @@ export default function OgImage() {
             >
               sometime
             </span>
+            {/* Must stay on one line: the whole point of the card is the swap
+                reading left to right. At 64 it overran 1200 and wrapped under
+                "sometime", which read as two unrelated lines. */}
             <span
               style={{
-                fontSize: 64,
+                fontSize: 52,
                 fontWeight: 600,
                 letterSpacing: 2,
                 color: "#C63D0B",
+                whiteSpace: "nowrap",
               }}
             >
               SAT 14 MAR · 9:00

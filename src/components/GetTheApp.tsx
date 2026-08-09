@@ -38,7 +38,7 @@ export function GetTheApp() {
               Free on iPhone and Android. Your list is waiting for a date.
             </p>
             <div className="mt-10">
-              <StoreButtons qr />
+              <StoreButtons />
             </div>
           </div>
         </Reveal>

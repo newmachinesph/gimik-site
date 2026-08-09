@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SiteSchema } from "@/components/SiteSchema";
+import { site } from "@/data/site";
 import "@/styles/index.css";
 
 const geistSans = Geist({
@@ -20,14 +22,37 @@ const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
 });
 
+const TITLE =
+  'Gora — Turns "we should do that sometime" into a date on the calendar';
+const DESCRIPTION =
+  "Gora turns the ideas sitting in your group chat into plans with a date on them. Bucket-list items, small things, big things — solo, with one person, or with everyone.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://getgora.app"),
-  title: {
-    default: 'Gora — Turns "we should do that sometime" into a date on the calendar',
-    template: "%s — Gora",
+  metadataBase: new URL(site.url),
+  title: { default: TITLE, template: "%s — Gora" },
+  description: DESCRIPTION,
+  applicationName: site.name,
+  category: "lifestyle",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    url: site.url,
+    locale: "en_US",
+    title: TITLE,
+    description: DESCRIPTION,
   },
-  description:
-    "Gora turns the ideas sitting in your group chat into plans with a date on them. Bucket-list items, small things, big things — solo, with one person, or with everyone.",
+  twitter: {
+    card: "summary_large_image",
+    title: "Gora — plans with people you like",
+    description:
+      "Write down the things you keep meaning to do, see who else wants the same, and give one a date.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -42,6 +67,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <SiteHeader />
         {children}
+        <SiteSchema />
       </body>
     </html>
   );

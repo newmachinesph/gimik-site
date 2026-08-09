@@ -4,6 +4,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { TryIt } from "@/components/TryIt";
 import { BucketIndex } from "@/components/BucketIndex";
 import { Modes } from "@/components/Modes";
+import { Faq } from "@/components/Faq";
 import { GetTheApp } from "@/components/GetTheApp";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -19,6 +20,7 @@ export default function Home() {
         <TryIt />
         <BucketIndex />
         <Modes />
+        <Faq />
         <GetTheApp />
       </main>
       <SiteFooter />

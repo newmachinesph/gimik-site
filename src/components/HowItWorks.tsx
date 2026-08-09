@@ -1,19 +1,18 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { chapters, type Chapter } from "@/data/chapters";
 import { PhoneFrame } from "./phone/PhoneFrame";
-import { SomedayList } from "./phone/screens/SomedayList";
-import { Matching } from "./phone/screens/Matching";
-import { Locked } from "./phone/screens/Locked";
+import { APP_SHOTS, PhoneShot, type ShotName } from "./phone/PhoneShot";
 import { Reveal } from "./Reveal";
 import { SectionRule } from "./SectionRule";
 
-const SCREENS: Record<Chapter["id"], () => ReactNode> = {
-  add: () => <SomedayList />,
-  match: () => <Matching />,
-  lock: () => <Locked />,
+/** Each move in the story, shown with the screen where it actually happens. */
+const SCREENS: Record<Chapter["id"], ShotName> = {
+  add: "list",
+  match: "activity",
+  lock: "calendar",
 };
 
 function ChapterCopy({ chapter }: { chapter: Chapter }) {
@@ -56,7 +55,7 @@ export function HowItWorks() {
     return () => observer.disconnect();
   }, []);
 
-  const ActiveScreen = SCREENS[active];
+  const activeShot = SCREENS[active];
 
   return (
     <section
@@ -84,7 +83,7 @@ export function HowItWorks() {
               className="sticky flex justify-center"
               style={{ top: "calc(var(--header-height) + 24px)" }}
             >
-              <PhoneFrame scale={0.82}>
+              <PhoneFrame scale={0.82} label={APP_SHOTS[activeShot].alt}>
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={active}
@@ -94,7 +93,7 @@ export function HowItWorks() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: reduced ? 0.15 : 0.36 }}
                   >
-                    <ActiveScreen />
+                    <PhoneShot name={activeShot} />
                   </motion.div>
                 </AnimatePresence>
               </PhoneFrame>
@@ -117,11 +116,13 @@ export function HowItWorks() {
         {/* Mobile: phone above each chapter, normal flow */}
         <div className="mt-16 space-y-24 min-[960px]:hidden">
           {chapters.map((chapter) => {
-            const Screen = SCREENS[chapter.id];
+            const shot = SCREENS[chapter.id];
             return (
               <div key={chapter.id}>
                 <div className="mb-10 flex justify-center">
-                  <PhoneFrame scale={0.68}>{Screen()}</PhoneFrame>
+                  <PhoneFrame scale={0.68} label={APP_SHOTS[shot].alt}>
+                    <PhoneShot name={shot} />
+                  </PhoneFrame>
                 </div>
                 <ChapterCopy chapter={chapter} />
               </div>

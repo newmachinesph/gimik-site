@@ -1,21 +1,28 @@
 import type { ReactNode } from "react";
 
 /**
- * iPhone chassis (spec §6). Screens are real DOM, never images.
- * Coplanar only — no rotation, no fanning, no per-phone z-offset.
+ * iPhone chassis (spec §6). Coplanar only — no rotation, no fanning, no
+ * per-phone z-offset.
+ *
+ * The chassis is decoration and stays hidden from assistive tech. Pass `label`
+ * when the screen inside is a real app capture: the frame then announces itself
+ * as one image describing that screen, instead of the reader meeting a stack of
+ * unlabelled boxes.
  */
 export function PhoneFrame({
   children,
   scale = 1,
   className = "",
+  label,
 }: {
   children: ReactNode;
   scale?: number;
   className?: string;
+  label?: string;
 }) {
   return (
     <div
-      aria-hidden="true"
+      {...(label ? { role: "img", "aria-label": label } : { "aria-hidden": true })}
       className={`shrink-0 ${className}`}
       style={{ width: 375 * scale, height: 780 * scale }}
     >

@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import { PhoneFrame } from "./phone/PhoneFrame";
-import { SomedayList } from "./phone/screens/SomedayList";
+import { APP_SHOTS, PhoneShot } from "./phone/PhoneShot";
 import { StoreButtons } from "./StoreButtons";
 
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
@@ -155,7 +155,7 @@ export function Hero() {
             animate={ready ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.52, ease: EASE_OUT, delay: 0.49 }}
           >
-            <StoreButtons qr />
+            <StoreButtons />
           </motion.div>
         </div>
 
@@ -167,8 +167,8 @@ export function Hero() {
           transition={{ duration: 1.1, ease: EASE_OUT, delay: 0.6 }}
         >
           <div className="translate-y-[88px]">
-            <PhoneFrame scale={0.72}>
-              <SomedayList />
+            <PhoneFrame scale={0.72} label={APP_SHOTS.list.alt}>
+              <PhoneShot name="list" priority />
             </PhoneFrame>
           </div>
         </motion.div>

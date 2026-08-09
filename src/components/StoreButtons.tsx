@@ -1,71 +1,79 @@
+import Image from "next/image";
 import { site } from "@/data/site";
 
-/* Deterministic decorative QR-style pattern (placeholder until real store QR). */
-const QR_CELLS = [
-  "111011010011101",
-  "100010111010001",
-  "101110001011101",
-  "101110100011101",
-  "101110010110101",
-  "100010110100001",
-  "111010101011111",
-  "000001110000000",
-  "110101001101110",
-  "011010110010011",
-  "101101011101101",
-  "000001101100010",
-  "111010011010110",
-  "100011010110010",
-  "101110110101011",
-];
-
-function QrPlaceholder() {
-  return (
-    <svg
-      aria-hidden="true"
-      width="92"
-      height="92"
-      viewBox="0 0 15 15"
-      className="hidden shrink-0 rounded-xl border border-rule bg-paper p-2 min-[960px]:block"
-    >
-      {QR_CELLS.flatMap((row, y) =>
-        row.split("").map((cell, x) =>
-          cell === "1" ? (
-            <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill="var(--ink)" />
-          ) : null,
-        ),
-      )}
-    </svg>
-  );
-}
+/**
+ * Official store badges, served from `public/badges/`.
+ *
+ * Both are the vendors' own artwork, downloaded unmodified — Apple's SVG and
+ * Google's PNG. Neither may be recoloured, re-proportioned, or redrawn, so the
+ * only thing we set is height, and the surrounding clear space is left alone.
+ *
+ * Google's PNG ships with roughly 10% transparent padding baked in; Apple's SVG
+ * has almost none. The two heights below are what make them look the same size.
+ */
+const BADGE = {
+  apple: {
+    src: "/badges/app-store.svg",
+    w: 119.66,
+    h: 40,
+    alt: "Download Gora on the App Store",
+  },
+  google: {
+    src: "/badges/google-play.png",
+    w: 646,
+    h: 250,
+    alt: "Get Gora on Google Play",
+  },
+} as const;
 
 function StoreBadge({
   href,
-  eyebrow,
-  store,
+  badge,
+  height,
+  bleed = 0,
 }: {
   href: string;
-  eyebrow: string;
-  store: string;
+  badge: (typeof BADGE)[keyof typeof BADGE];
+  height: number;
+  bleed?: number;
 }) {
+  const img = (
+    <Image
+      src={badge.src}
+      alt={badge.alt}
+      width={badge.w}
+      height={badge.h}
+      style={{ height, width: "auto", marginBlock: -bleed }}
+      unoptimized
+    />
+  );
+
+  // Until a store URL exists the badge is shown but not offered as a link — a
+  // badge that navigates nowhere is worse than one that plainly says "soon".
+  if (!href || href === "#") {
+    return (
+      <span className="inline-flex flex-col items-start gap-1" aria-disabled="true">
+        <span className="opacity-70">{img}</span>
+        <span className="mono-label text-[10px] text-ink-muted">Coming soon</span>
+      </span>
+    );
+  }
+
   return (
     <a
       href={href}
-      className="flex min-h-[52px] min-w-[160px] flex-col justify-center rounded-full bg-ink px-7 py-2.5 text-paper transition-transform duration-[160ms] hover:-translate-y-0.5 active:translate-y-0"
+      className="inline-flex rounded-lg transition-transform duration-[160ms] hover:-translate-y-0.5 active:translate-y-0"
     >
-      <span className="mono-label block text-[10px] opacity-70">{eyebrow}</span>
-      <span className="block text-[17px] font-semibold leading-tight">{store}</span>
-      <span className="sr-only">(placeholder link — coming soon)</span>
+      {img}
     </a>
   );
 }
 
-export function StoreButtons({ qr = false }: { qr?: boolean }) {
+export function StoreButtons() {
   return (
-    <div className="flex flex-wrap items-center gap-4">
-      <StoreBadge href={site.appStoreUrl} eyebrow="Download on the" store="App Store" />
-      <StoreBadge href={site.googlePlayUrl} eyebrow="Get it on" store="Google Play" />
-      {qr && <QrPlaceholder />}
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+      <StoreBadge href={site.appStoreUrl} badge={BADGE.apple} height={48} />
+      <StoreBadge href={site.googlePlayUrl} badge={BADGE.google} height={69} bleed={10} />
     </div>
   );
 }

@@ -21,7 +21,9 @@ export function GoraMark({ size = 34 }: { size?: number }) {
       width={size}
       height={size}
       priority
-      className="shrink-0"
+      // The pin's round head makes the mark read top-heavy; a 1px down-nudge
+      // optically centers it against the wordmark in every lockup.
+      className="shrink-0 translate-y-[1px]"
     />
   );
 }
@@ -39,21 +41,29 @@ export function SiteHeader() {
   return (
     <header
       className="fixed inset-x-0 top-0 z-[60]"
-      style={{
-        height: "var(--header-height)",
-        background: scrolled
-          ? "color-mix(in srgb, var(--paper) 88%, transparent)"
-          : "transparent",
-        backdropFilter: scrolled ? "blur(18px)" : "none",
-        borderBottom: scrolled ? "1px solid var(--rule)" : "1px solid transparent",
-        transition:
-          "background 220ms var(--ease-standard), border-color 220ms var(--ease-standard)",
-      }}
+      style={{ height: "var(--header-height)" }}
     >
-      <div className="container-page flex h-full items-center justify-between gap-6">
+      {/* The blur/tint lives on this child layer, NOT on <header>: a
+          backdrop-filter would make the header the containing block for the
+          fixed NavDrawer rendered inside it, collapsing the drawer to the
+          72px header box whenever the page is scrolled. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: scrolled
+            ? "color-mix(in srgb, var(--paper) 88%, transparent)"
+            : "transparent",
+          backdropFilter: scrolled ? "blur(18px)" : "none",
+          borderBottom: scrolled ? "1px solid var(--rule)" : "1px solid transparent",
+          transition:
+            "background 220ms var(--ease-standard), border-color 220ms var(--ease-standard)",
+        }}
+      />
+      <div className="container-page relative flex h-full items-center justify-between gap-6">
         <a href="#main-content" className="flex items-center gap-2.5" aria-label="Gora — home">
           <GoraMark />
-          <span className="text-[19px] font-semibold tracking-[-0.02em]">Gora</span>
+          <span className="text-[19px] font-semibold leading-none tracking-[-0.02em]">Gora</span>
         </a>
 
         <nav aria-label="Site" className="hidden min-[960px]:block">

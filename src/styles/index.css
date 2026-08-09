@@ -68,6 +68,53 @@ body {
   contain-intrinsic-size: auto 800px;
 }
 
+/* Hero date chip — the moment "sometime" becomes a plan, so it gets a plate
+   that reads as a torn-off ticket stub rather than a box. Everything is sized
+   in em so the chip tracks the fluid display type it sits inside. */
+.date-ticket {
+  --bite: 0.15em; /* radius of each perforation */
+  --bite-step: 0.6em; /* distance between perforations */
+  position: relative;
+  display: inline-block;
+  padding: 0.46em 0.72em;
+  /* Ink on the brand orange, not paper on it: paper reads at 2.7:1 here and
+     fails AA, ink clears 6:1 and keeps the fill at full strength. */
+  color: var(--ink);
+  isolation: isolate;
+}
+
+/* The plate. Four repeating radial-gradient mask layers — one per edge —
+   intersected, so every side is chewed by the same perforation. */
+.date-ticket::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* --orange is the "locked plan" fill, which is exactly what this is. */
+  background: var(--orange);
+  mask:
+    radial-gradient(circle var(--bite) at 50% 0, #0000 98%, #000 100%) 50% 0 /
+      var(--bite-step) 100% repeat-x,
+    radial-gradient(circle var(--bite) at 50% 100%, #0000 98%, #000 100%) 50%
+      100% / var(--bite-step) 100% repeat-x,
+    radial-gradient(circle var(--bite) at 0 50%, #0000 98%, #000 100%) 0 50% /
+      100% var(--bite-step) repeat-y,
+    radial-gradient(circle var(--bite) at 100% 50%, #0000 98%, #000 100%) 100%
+      50% / 100% var(--bite-step) repeat-y;
+  mask-composite: intersect;
+}
+
+/* Tear-line inset past the perforations — the detail that says "stub" rather
+   than "highlighted text". Paper-coloured so it reads as punched, not drawn. */
+.date-ticket::after {
+  content: "";
+  position: absolute;
+  inset: 0.28em;
+  z-index: -1;
+  border: 1px dashed color-mix(in srgb, var(--paper) 55%, transparent);
+  border-radius: 2px;
+}
+
 /* Display headings: overflow hardening (spec §3.3) */
 .display-head {
   min-width: 0;

@@ -1,32 +1,11 @@
 "use client";
 
 import { motion, useMotionValueEvent } from "motion/react";
-import Image from "next/image";
 import { useRef, useState } from "react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { GoraLockup } from "./GoraLockup";
 import { NavDrawer } from "./NavDrawer";
 import { NAV_LINKS } from "@/data/site";
-
-/**
- * The Gora mark: a map pin whose ring breaks on the right to form a G, with a
- * check inside. This is the app's own artwork, copied from Gora-Mobile rather
- * than redrawn — what used to sit here was an unrelated rounded square with a
- * dot on a line, matching nothing Gora ships.
- */
-export function GoraMark({ size = 34 }: { size?: number }) {
-  return (
-    <Image
-      src="/brand/gora-mark.png"
-      alt=""
-      width={size}
-      height={size}
-      priority
-      // The pin's round head makes the mark read top-heavy; a 1px down-nudge
-      // optically centers it against the wordmark in every lockup.
-      className="shrink-0 translate-y-[1px]"
-    />
-  );
-}
 
 export function SiteHeader() {
   const progress = useScrollProgress();
@@ -61,9 +40,14 @@ export function SiteHeader() {
         }}
       />
       <div className="container-page relative flex h-full items-center justify-between gap-6">
-        <a href="#main-content" className="flex items-center gap-2.5" aria-label="Gora — home">
-          <GoraMark />
-          <span className="text-[19px] font-semibold leading-none tracking-[-0.02em]">Gora</span>
+        {/* -my-2 py-2: the lockup's ink is only 22px tall, under the 24px
+            minimum target size, so the link pads out without moving the mark. */}
+        <a
+          href="#main-content"
+          className="-my-2 flex items-center py-2"
+          aria-label="Gora — home"
+        >
+          <GoraLockup />
         </a>
 
         <nav aria-label="Site" className="hidden min-[960px]:block">

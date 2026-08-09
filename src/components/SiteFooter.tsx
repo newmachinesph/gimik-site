@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NAV_LINKS, site } from "@/data/site";
-import { GoraMark } from "./SiteHeader";
+import { GoraLockup } from "./GoraLockup";
 
 const COLUMNS = [
   {
@@ -49,12 +49,7 @@ export function SiteFooter() {
           }}
         >
           <div>
-            <span className="flex items-center gap-2.5">
-              <GoraMark size={30} />
-              <span className="text-[19px] font-semibold leading-none tracking-[-0.02em]">
-                Gora
-              </span>
-            </span>
+            <GoraLockup />
             <p className="mt-4 max-w-[28ch] text-[15px] leading-[1.65] text-ink-muted">
               {site.slogan}
             </p>

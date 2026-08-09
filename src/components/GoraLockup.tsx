@@ -87,14 +87,15 @@ export function GoraLockup({
         style={{
           height: markHeight,
           width: markHeight * MARK_ASPECT,
-          // Layout puts the mark's bottom on the baseline; this drops it by the
-          // overhang so its centre lands on the centre of the cap band.
+          // An SVG has no baseline, so flexbox synthesises one from its border
+          // box bottom — which lands the mark's bottom on the text baseline.
+          // Dropping it by the overhang puts its centre on the cap band's.
           transform: `translateY(${overhang}px)`,
-          // The transform is paint-only, so the mark's visual bottom now sits
-          // below its layout box. Reclaim that space to keep the lockup's
-          // measured height honest for whatever lays it out.
-          marginBottom: overhang,
+          // The transform is paint-only, so without these the layout box would
+          // sit a whole overhang above where the mark is actually drawn. Shift
+          // it down to match, keeping the lockup's measured height honest.
           marginTop: -overhang,
+          marginBottom: overhang,
         }}
       />
       <span className="font-semibold leading-none tracking-[-0.02em]">Gora</span>

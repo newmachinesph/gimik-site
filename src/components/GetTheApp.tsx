@@ -1,7 +1,11 @@
 import { StoreButtons } from "./StoreButtons";
 import { Reveal } from "./Reveal";
 
-/** The one large orange field on the page (spec §3.1, §4.8). Ink text, never white. */
+/**
+ * The one large orange field on the page (spec §3.1, §4.8). Light (paper) type
+ * per user direction 2026-08-09 — overrides the spec's original ink-text note,
+ * which left the muted labels near-invisible on orange.
+ */
 export function GetTheApp() {
   return (
     <section
@@ -12,7 +16,7 @@ export function GetTheApp() {
       <div className="container-page">
         <Reveal>
           <div
-            className="relative overflow-hidden bg-orange text-ink"
+            className="relative overflow-hidden bg-orange text-paper"
             style={{
               borderRadius: 32,
               padding: "clamp(32px, 4vw, 64px)",
@@ -38,7 +42,7 @@ export function GetTheApp() {
               Free on iPhone and Android. Your list is waiting for a date.
             </p>
             <div className="mt-10">
-              <StoreButtons />
+              <StoreButtons tone="light" />
             </div>
           </div>
         </Reveal>

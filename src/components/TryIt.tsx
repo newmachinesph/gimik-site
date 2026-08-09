@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import Image from "next/image";
 import { useRef, useState } from "react";
 import {
   useDragToSchedule,
@@ -18,6 +19,14 @@ const CARDS: SomedayCard[] = [
   { id: "market", title: "Night market run", plannedDay: null },
   { id: "pottery", title: "Pottery class", plannedDay: null },
 ];
+
+// Card photos come from the bucket-list activity library
+// (../bucket-list/images), downscaled to 640px webp in public/someday/.
+const CARD_ART: Record<string, string> = {
+  surf: "/someday/surf.webp",
+  market: "/someday/market.webp",
+  pottery: "/someday/pottery.webp",
+};
 
 const DAYS: DayCell[] = [
   { index: 0, short: "MON", date: "9 MAR", announce: "Monday 9 March" },
@@ -108,7 +117,7 @@ export function TryIt() {
               return (
                 <motion.div
                   key={card.id}
-                  className="relative"
+                  className="relative w-full min-[480px]:w-auto"
                   exit={{ opacity: 0, scale: reduced ? 1 : 0.9 }}
                   transition={{ duration: 0.15 }}
                 >
@@ -119,7 +128,7 @@ export function TryIt() {
                     }}
                     aria-haspopup="listbox"
                     aria-expanded={isOpen}
-                    className={`block min-h-[112px] w-[228px] cursor-grab rounded-2xl bg-sky p-5 text-left text-ink ${
+                    className={`relative block min-h-[140px] w-full cursor-grab overflow-hidden rounded-2xl bg-sky p-5 text-left min-[480px]:w-[228px] ${
                       isDragging ? "z-50 cursor-grabbing shadow-2xl" : ""
                     }`}
                     style={{ touchAction: "none", userSelect: "none", willChange: "transform" }}
@@ -151,10 +160,23 @@ export function TryIt() {
                       if (!movedRef.current) openListbox(card.id);
                     }}
                   >
-                    <span className="mono-label block text-[10px] text-sky-deep">
+                    <Image
+                      src={CARD_ART[card.id]}
+                      alt=""
+                      fill
+                      sizes="228px"
+                      draggable={false}
+                      className="pointer-events-none select-none object-cover"
+                    />
+                    {/* Scrim keeps the label/title legible over any photo. */}
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-black/25 to-black/10"
+                    />
+                    <span className="mono-label relative block text-[10px] text-sky">
                       someday
                     </span>
-                    <span className="serif-accent mt-2 block text-[26px] leading-tight">
+                    <span className="serif-accent relative mt-2 block text-[26px] leading-tight text-white">
                       {card.title}
                     </span>
                     <span className="sr-only">— press Enter to pick a day</span>
@@ -179,7 +201,7 @@ export function TryIt() {
                           aria-selected={listbox.active === day.index}
                           className={`flex items-center justify-between rounded-lg px-3 py-2 text-[14px] ${
                             listbox.active === day.index
-                              ? "bg-orange font-semibold text-ink"
+                              ? "bg-orange font-semibold text-paper"
                               : "text-ink-muted"
                           }`}
                           onPointerDown={(e) => {
@@ -205,7 +227,9 @@ export function TryIt() {
         </div>
 
         {/* Week strip */}
-        <div className="mt-12 grid snap-x snap-proximity auto-cols-[minmax(120px,1fr)] grid-flow-col gap-2 overflow-x-auto pb-2 min-[640px]:grid-flow-row min-[640px]:grid-cols-7 min-[640px]:overflow-visible">
+        {/* Below 900px the strip scrolls horizontally — 7 fixed columns get too
+            cramped for the photo cards on phones and portrait tablets. */}
+        <div className="mt-12 grid snap-x snap-proximity auto-cols-[minmax(150px,1fr)] grid-flow-col gap-2 overflow-x-auto pb-2 min-[900px]:grid-flow-row min-[900px]:grid-cols-7 min-[900px]:overflow-visible">
           {DAYS.map((day) => {
             const planned = drag.cards.filter((c) => c.plannedDay === day.index);
             const isTarget = drag.hoverDay === day.index;
@@ -228,7 +252,7 @@ export function TryIt() {
                   {planned.map((card) => (
                     <motion.div
                       key={card.id}
-                      className="rounded-xl bg-orange p-3 text-ink"
+                      className="overflow-hidden rounded-xl bg-orange p-2.5 text-paper"
                       initial={
                         reduced ? { opacity: 0 } : { opacity: 0, scale: 0.7 }
                       }
@@ -239,7 +263,16 @@ export function TryIt() {
                           : { duration: 0.42, ease: EASE_SPRING } // lock confirmation
                       }
                     >
-                      <span className="mono-label block text-[9px]">
+                      <span className="relative block h-14 w-full overflow-hidden rounded-lg">
+                        <Image
+                          src={CARD_ART[card.id]}
+                          alt=""
+                          fill
+                          sizes="200px"
+                          className="object-cover"
+                        />
+                      </span>
+                      <span className="mono-label mt-2 block text-[9px]">
                         {day.short} {day.date} · 9:00
                       </span>
                       <span className="mt-1 block text-[15px] font-semibold leading-tight">

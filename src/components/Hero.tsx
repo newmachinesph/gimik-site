@@ -60,7 +60,9 @@ export function Hero() {
   return (
     <section
       aria-label="Gora — plans with people you like"
-      className="relative flex flex-col justify-end"
+      className="relative flex flex-col"
+      // border-box: the header padding is inside the 100svh, so hero + fixed
+      // navbar together fill exactly the first viewport.
       style={{ minHeight: "100svh", paddingTop: "var(--header-height)" }}
     >
       {/* Atmosphere: one static sky wash behind the phone — the "someday" zone.
@@ -72,9 +74,10 @@ export function Hero() {
         />
         <div className="absolute inset-x-0 bottom-0 border-b border-rule" />
       </div>
-      <div className="container-page relative grid w-full grid-cols-1 items-end gap-x-8 pb-12 min-[960px]:grid-cols-12 min-[960px]:pb-0">
-        {/* Copy — lower-left, columns 1–8 */}
-        <div className="min-[960px]:col-span-8 min-[960px]:pb-16">
+      <div className="container-page relative grid w-full flex-1 grid-cols-1 items-center gap-x-8 pb-12 min-[960px]:grid-cols-12 min-[960px]:pb-0">
+        {/* Copy — columns 1–8, vertically centered in the space under the
+            navbar; the phone column stays planted on the fold via self-end. */}
+        <div className="min-[960px]:col-span-8">
           <motion.p
             className="mono-label text-ink-muted"
             initial={{ opacity: 0 }}
@@ -159,17 +162,33 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Phone — lower-right, coplanar, desktop only */}
+        {/* Phone — right column, vertically centered, desktop only. After the
+            entrance it keeps a slow 3D drift (float + tilt) so the mockup
+            feels alive without stealing attention from the copy. */}
         <motion.div
-          className="hidden justify-end self-end min-[960px]:col-span-4 min-[960px]:flex"
+          className="hidden justify-end self-center min-[960px]:col-span-4 min-[960px]:flex"
           initial={{ opacity: 0, y: 80 }}
           animate={ready ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 1.1, ease: EASE_OUT, delay: 0.6 }}
         >
-          <div className="translate-y-[88px]">
-            <PhoneFrame scale={0.72} label={APP_SHOTS.list.alt}>
-              <PhoneShot name="list" priority />
-            </PhoneFrame>
+          <div style={{ perspective: 1200 }}>
+            <motion.div
+              style={{ transformStyle: "preserve-3d", willChange: "transform" }}
+              animate={
+                reduced
+                  ? undefined
+                  : {
+                      rotateY: [-5, 5, -5],
+                      rotateX: [1.5, -1.5, 1.5],
+                      y: [-7, 7, -7],
+                    }
+              }
+              transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <PhoneFrame scale={0.72} label={APP_SHOTS.list.alt}>
+                <PhoneShot name="list" priority />
+              </PhoneFrame>
+            </motion.div>
           </div>
         </motion.div>
       </div>

@@ -28,8 +28,10 @@ function Word({
   // Word i finishes turning on at (i+1)/total, over a window of ~2 words.
   const start = index / total;
   const end = (index + 1) / total;
-  // 0.5 floor keeps the un-revealed words ≥3:1 on paper at display size (AA large text).
-  const opacity = useTransform(progress, [start, end], [0.5, 1]);
+  // 0.2 floor makes un-revealed words read as clearly "off" next to full ink.
+  // The real sentence lives in the sr-only span (this one is aria-hidden), so
+  // the dimmed state carries no contrast requirement of its own.
+  const opacity = useTransform(progress, [start, end], [0.2, 1]);
   return (
     <motion.span aria-hidden="true" style={{ opacity }}>
       {word}{" "}
@@ -42,16 +44,16 @@ export function Manifesto() {
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.8", "end 0.45"],
+    // Track the text block itself, not the 100svh section around it: the reveal
+    // starts as the text enters (top at 85% of the viewport) and completes
+    // while it is still fully on screen (top at 40%). The old section-based
+    // range only reached 1 after the text had scrolled past the top edge.
+    offset: ["start 0.85", "start 0.4"],
   });
 
   return (
-    <section
-      ref={ref}
-      className="flex items-center"
-      style={{ minHeight: "100svh" }}
-    >
-      <div className="container-page">
+    <section className="flex items-center" style={{ minHeight: "100svh" }}>
+      <div ref={ref} className="container-page">
         <p
           className="mx-auto max-w-[24ch] text-center font-medium"
           style={{

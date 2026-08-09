@@ -1,6 +1,13 @@
 export type BucketItem = {
   number: string;
   title: string;
+  /**
+   * The catalog activity this marketing line maps to (activities.title in the
+   * catalog database, Want.canonicalTitle in Gora-Mobile). Site copy can be
+   * evocative — "See the northern lights" — but the chain site -> app ->
+   * catalog resolves through this exact title.
+   */
+  canonicalTitle: string;
   social: string;
   image: { src: string; alt: string };
 };
@@ -9,6 +16,7 @@ export const bucketItems: BucketItem[] = [
   {
     number: "014",
     title: "Learn to surf",
+    canonicalTitle: "Learn to surf",
     social: "3 friends have this",
     image: {
       src: "/surf.jpg",
@@ -18,6 +26,7 @@ export const bucketItems: BucketItem[] = [
   {
     number: "027",
     title: "See the northern lights",
+    canonicalTitle: "See an aurora",
     social: "1 friend has this",
     image: {
       src: "/aurora.jpg",
@@ -27,6 +36,7 @@ export const bucketItems: BucketItem[] = [
   {
     number: "033",
     title: "Fly over Cappadocia at sunrise",
+    canonicalTitle: "Ride a hot-air balloon",
     social: "2 friends have this",
     image: {
       src: "/balloons.jpg",
@@ -36,6 +46,7 @@ export const bucketItems: BucketItem[] = [
   {
     number: "041",
     title: "Eat through a night market",
+    canonicalTitle: "Eat street food",
     social: "5 friends have this",
     image: {
       src: "/market.jpg",
@@ -45,6 +56,7 @@ export const bucketItems: BucketItem[] = [
   {
     number: "052",
     title: "Freedive a coral reef",
+    canonicalTitle: "Dive a coral reef",
     social: "solo",
     image: {
       src: "/reef.jpg",
@@ -54,6 +66,7 @@ export const bucketItems: BucketItem[] = [
   {
     number: "068",
     title: "Catch a summit sunset",
+    canonicalTitle: "Climb to a mountain summit",
     social: "2 friends have this",
     image: {
       src: "/summit.jpg",

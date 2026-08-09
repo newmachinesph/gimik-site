@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { NAV_LINKS, site } from "@/data/site";
+import { GoraMark } from "./SiteHeader";
 
 const COLUMNS = [
   {
@@ -27,19 +29,17 @@ export function SiteFooter() {
     <footer className="overflow-hidden border-t border-rule">
       <div className="container-page pb-10 pt-16">
         <h2 className="sr-only">Gora</h2>
-        {/* Oversized outline wordmark */}
-        <p
+        {/* Wordmark scene — mini people ticking off their bucket lists in the
+            letters. Background is flattened to exactly var(--paper) so the
+            image sits seamlessly on the footer. */}
+        <Image
+          src="/brand/gora-footer.webp"
+          alt=""
           aria-hidden="true"
-          className="select-none font-semibold leading-none"
-          style={{
-            fontSize: "clamp(4rem, 14vw, 12rem)",
-            letterSpacing: "-0.035em",
-            WebkitTextStroke: "1.5px var(--rule)",
-            color: "transparent",
-          }}
-        >
-          Gora
-        </p>
+          width={1532}
+          height={936}
+          className="mx-auto w-full max-w-[980px] select-none"
+        />
 
         <div
           className="mt-14 grid"
@@ -49,7 +49,12 @@ export function SiteFooter() {
           }}
         >
           <div>
-            <p className="mono-label text-ink-muted">Gora</p>
+            <span className="flex items-center gap-2.5">
+              <GoraMark size={30} />
+              <span className="text-[19px] font-semibold leading-none tracking-[-0.02em]">
+                Gora
+              </span>
+            </span>
             <p className="mt-4 max-w-[28ch] text-[15px] leading-[1.65] text-ink-muted">
               {site.slogan}
             </p>

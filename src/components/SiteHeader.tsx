@@ -1,33 +1,28 @@
 "use client";
 
 import { motion, useMotionValueEvent } from "motion/react";
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { NavDrawer } from "./NavDrawer";
 import { NAV_LINKS } from "@/data/site";
 
-/** Gora mark: a date landing on the calendar line. Reused as footer mark. */
-export function GoraMark({ size = 28 }: { size?: number }) {
+/**
+ * The Gora mark: a map pin whose ring breaks on the right to form a G, with a
+ * check inside. This is the app's own artwork, copied from Gora-Mobile rather
+ * than redrawn — what used to sit here was an unrelated rounded square with a
+ * dot on a line, matching nothing Gora ships.
+ */
+export function GoraMark({ size = 34 }: { size?: number }) {
   return (
-    <svg
+    <Image
+      src="/brand/gora-mark.png"
+      alt=""
       width={size}
       height={size}
-      viewBox="0 0 28 28"
-      aria-hidden="true"
+      priority
       className="shrink-0"
-    >
-      <rect width="28" height="28" rx="8" fill="var(--orange)" />
-      <line
-        x1="6"
-        y1="19.5"
-        x2="22"
-        y2="19.5"
-        stroke="var(--paper)"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <circle cx="14" cy="12" r="4.5" fill="var(--paper)" />
-    </svg>
+    />
   );
 }
 

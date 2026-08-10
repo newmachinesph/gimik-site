@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -21,6 +22,13 @@ const instrumentSerif = Instrument_Serif({
   style: "italic",
   subsets: ["latin"],
 });
+
+/**
+ * GA4 measurement ID. Hard-coded on purpose: it is a public client-side
+ * identifier that ships in the page source either way, so an env var would
+ * buy nothing but a way for the build to silently lose analytics.
+ */
+const GA_MEASUREMENT_ID = "G-BPSXSPM3EE";
 
 const TITLE =
   'Gora — Turns "we should do that sometime" into a date on the calendar';
@@ -69,6 +77,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <SiteSchema />
       </body>
+      {/* Outside <body> and after it, per the Next third-parties guide: the
+          tag loads after hydration so it stays off the critical path. */}
+      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }

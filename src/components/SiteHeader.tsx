@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useMotionValueEvent } from "motion/react";
 import { useRef, useState } from "react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
@@ -42,36 +43,36 @@ export function SiteHeader() {
       <div className="container-page relative flex h-full items-center justify-between gap-6">
         {/* -my-2 py-2: the lockup's ink is only 22px tall, under the 24px
             minimum target size, so the link pads out without moving the mark. */}
-        <a
-          href="#main-content"
+        <Link
+          href="/"
           className="-my-2 flex items-center py-2"
           aria-label="Gora — home"
         >
           <GoraLockup />
-        </a>
+        </Link>
 
         <nav aria-label="Site" className="hidden min-[960px]:block">
           <ul className="flex items-center gap-9">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="text-[15px] font-medium text-ink-muted transition-colors duration-[160ms] hover:text-ink"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#get"
+          <Link
+            href="/#get"
             className="hidden min-h-[44px] items-center rounded-full bg-ink px-6 text-[15px] font-semibold text-paper transition-transform duration-[160ms] hover:-translate-y-0.5 min-[960px]:flex"
           >
             Get the app
-          </a>
+          </Link>
           <button
             ref={triggerRef}
             onClick={() => setDrawerOpen(true)}

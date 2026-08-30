@@ -49,17 +49,19 @@ export function SiteSchema() {
         priceCurrency: "USD",
         availability: "https://schema.org/PreOrder",
       },
-      // GEO: the three markets Gora launches in, named as countries so a
-      // regional query can match rather than guessing from the .app domain.
-      areaServed: site.launchMarkets.map((market) => ({
+      // GEO: the market Gora launches in, named as a country so a regional
+      // query can match rather than guessing from the .app domain.
+      areaServed: {
         "@type": "Country",
-        name: market.name,
-        identifier: market.code,
-      })),
+        name: site.launchMarket.name,
+        identifier: site.launchMarket.code,
+      },
+      // Real captures of the shipping build, kept in step with PhoneShot.
       screenshot: [
-        `${site.url}/app-screens/app-list.webp`,
-        `${site.url}/app-screens/app-activity.webp`,
-        `${site.url}/app-screens/app-calendar.webp`,
+        `${site.url}/app-screens/01-discover.webp`,
+        `${site.url}/app-screens/03-activity.webp`,
+        `${site.url}/app-screens/11-someday.webp`,
+        `${site.url}/app-screens/06-messages.webp`,
       ],
     },
     {

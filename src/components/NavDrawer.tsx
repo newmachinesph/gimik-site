@@ -3,6 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, type RefObject } from "react";
 import { StoreButtons } from "./StoreButtons";
+import Link from "next/link";
 import { NAV_LINKS } from "@/data/site";
 
 export function NavDrawer({
@@ -98,13 +99,13 @@ export function NavDrawer({
               <ul className="space-y-2">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
-                    <a
+                    <Link
                       href={link.href}
                       onClick={onClose}
                       className="block py-3 text-[28px] font-semibold tracking-[-0.02em]"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

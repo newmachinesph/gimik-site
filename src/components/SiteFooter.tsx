@@ -3,17 +3,24 @@ import Link from "next/link";
 import { NAV_LINKS, site } from "@/data/site";
 import { GoraLockup } from "./GoraLockup";
 
+// NAV_LINKS are already absolute routes, so they are used as-is. They used to
+// be in-page anchors that needed a "/" prefix; keeping that prefix here after
+// the nav became real pages produced "//features".
 const COLUMNS = [
   {
     title: "Product",
     links: [
-      ...NAV_LINKS.map((l) => ({ href: `/${l.href}` as string, label: l.label as string })),
+      ...NAV_LINKS.map((l) => ({ href: l.href as string, label: l.label as string })),
       { href: "/#get", label: "Get the app" },
     ],
   },
   {
     title: "Company",
-    links: [{ href: "/contact", label: "Contact" }],
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/press", label: "Press" },
+      { href: "/contact", label: "Contact" },
+    ],
   },
   {
     title: "Legal",

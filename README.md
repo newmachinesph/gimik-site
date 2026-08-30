@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# getgoraapp
 
-## Getting Started
+Marketing site for **Gora** — the app that turns "we should do that sometime" into
+a date on the calendar. Next.js 16, React 19, Tailwind 4, deployed on Vercel.
 
-First, run the development server:
+## Running it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build + typecheck
+npx eslint .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How it is put together
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/data/` is the content layer. Copy lives here, not in components:
+  `site.ts` (name, URLs, FAQ), `features.ts` (what the app does),
+  `support.ts` (help content). The landing page and `/features` render the
+  same `FEATURES` array, so they cannot drift apart.
+- `src/components/site/kit.tsx` holds the section primitives every page is
+  built from — `SectionHead`, `Stage`, `FeatureBlock`.
+- `src/styles/tokens.css` is the only place raw colour values appear. It
+  mirrors the mobile app's palette (`gora-v2/src/lib/colors.ts`) exactly;
+  change one and change the other.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Screenshots
 
-## Learn More
+Every phone image on this site is a real capture of the shipping build, not a
+mockup. To refresh them, connect an Android device with the app installed and:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+./scripts/capture-screens.sh      # writes ./screens-raw (gitignored)
+node scripts/process-screens.mjs  # crops + converts into public/app-screens
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The capture script navigates by deep link rather than by tapping coordinates —
+taps race with navigation and silently capture the previous screen — and forces
+SystemUI demo mode so the status bar is identical in every shot. The processing
+step crops the phone's status and gesture bars, since the site renders these
+inside its own chassis.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+After adding or renaming a screen, update `APP_SHOTS` in
+`src/components/phone/PhoneShot.tsx`, including its alt text.
 
-## Deploy on Vercel
+## Before launch
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`site.appStoreUrl` and `site.googlePlayUrl` are `"#"`. While they are, the store
+badges render with a "Coming soon" note instead of a link, so nothing on the
+page points at a dead URL. Set them the day each listing goes live.

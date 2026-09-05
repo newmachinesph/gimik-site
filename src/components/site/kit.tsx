@@ -57,12 +57,12 @@ export function Stage({
   shot,
   tone = "sky",
   scale = 0.72,
-  priority = false,
+  preload = false,
 }: {
   shot: ShotName;
   tone?: "sky" | "orange" | "night" | "paper";
   scale?: number;
-  priority?: boolean;
+  preload?: boolean;
 }) {
   const ground = {
     sky: "color-mix(in srgb, var(--sky) 16%, var(--paper))",
@@ -77,7 +77,10 @@ export function Stage({
       style={{ background: ground }}
     >
       <PhoneFrame scale={scale} label={APP_SHOTS[shot].alt}>
-        <PhoneShot name={shot} priority={priority} />
+        {/* scale reaches PhoneShot as well as PhoneFrame: the frame uses it to
+            draw the chassis, the shot uses it to ask for a capture the size it
+            will actually be painted at. */}
+        <PhoneShot name={shot} scale={scale} preload={preload} />
       </PhoneFrame>
     </div>
   );
@@ -95,7 +98,7 @@ export function FeatureBlock({
   shot,
   tone = "sky",
   flip = false,
-  priority = false,
+  preload = false,
 }: {
   eyebrow: string;
   title: string;
@@ -104,7 +107,7 @@ export function FeatureBlock({
   shot: ShotName;
   tone?: "sky" | "orange" | "night" | "paper";
   flip?: boolean;
-  priority?: boolean;
+  preload?: boolean;
 }) {
   return (
     <div className="grid items-center gap-x-16 gap-y-10 lg:grid-cols-2">
@@ -127,7 +130,7 @@ export function FeatureBlock({
         </ul>
       </Reveal>
       <Reveal delay={0.08} className={flip ? "lg:order-1" : undefined}>
-        <Stage shot={shot} tone={tone} priority={priority} />
+        <Stage shot={shot} tone={tone} preload={preload} />
       </Reveal>
     </div>
   );

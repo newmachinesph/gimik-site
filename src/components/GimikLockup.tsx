@@ -1,8 +1,8 @@
 import type { CSSProperties } from "react";
 
 /**
- * The Gora mark: a map pin whose ring breaks on the right to form a G, with a
- * check inside. Paths are copied verbatim from public/brand/gora-mark.svg.
+ * The Gimik mark: a map pin whose ring breaks on the right to form a G, with a
+ * check inside. Paths are copied verbatim from public/brand/gimik-mark.svg.
  *
  * The viewBox is cropped to the artwork's real bounds rather than kept at the
  * source file's 1024x1024 canvas. The drawing only occupies 511x678 of that
@@ -32,7 +32,7 @@ const MARK_HEIGHT_IN_CAPS = 1.667;
 /** Space between mark and wordmark, as a multiple of cap height. */
 const GAP_IN_CAPS = 0.62;
 
-export function GoraMark({
+export function GimikMark({
   className,
   style,
 }: {
@@ -66,7 +66,7 @@ export function GoraMark({
  *
  * `size` is the wordmark's font size in px; the mark scales from it.
  */
-export function GoraLockup({
+export function GimikLockup({
   size = 19,
   className,
 }: {
@@ -82,7 +82,7 @@ export function GoraLockup({
       className={`inline-flex items-baseline ${className ?? ""}`}
       style={{ fontSize: size, gap: cap * GAP_IN_CAPS }}
     >
-      <GoraMark
+      <GimikMark
         className="shrink-0 text-orange"
         style={{
           height: markHeight,
@@ -98,7 +98,7 @@ export function GoraLockup({
           marginBottom: overhang,
         }}
       />
-      <span className="font-semibold leading-none tracking-[-0.02em]">Gora</span>
+      <span className="font-semibold leading-none tracking-[-0.02em]">Gimik</span>
     </span>
   );
 }

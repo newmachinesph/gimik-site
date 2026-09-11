@@ -1,6 +1,6 @@
-# getgoraapp
+# gimik-site
 
-Marketing site for **Gora** — the app that turns "we should do that sometime" into
+Marketing site for **Gimik** — the app that turns "we should do that sometime" into
 a date on the calendar. Next.js 16, React 19, Tailwind 4, deployed on Vercel.
 
 ## Running it

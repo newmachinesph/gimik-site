@@ -12,10 +12,10 @@ export const SUPPORT_TOPICS = [
     items: [
       {
         q: "How do I make an account?",
-        a: "Open Gora and sign up with your email address. You will be asked for a name, a handle and the city you are in — the city is what makes local somedays and nearby people useful.",
+        a: "Open Gimik and sign up with your email address. You will be asked for a name, a handle and the city you are in — the city is what makes local somedays and nearby people useful.",
       },
       {
-        q: "I do not know anyone on Gora yet.",
+        q: "I do not know anyone on Gimik yet.",
         a: "That is fine. Browse the catalogue, keep what you want, and lock a date on your own. Nothing in the core loop needs a second person.",
       },
     ],

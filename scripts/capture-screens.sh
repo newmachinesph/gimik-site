@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Capture Gora app screenshots for the marketing site.
+# Capture Gimik app screenshots for the marketing site.
 #
 # Every image on this site must be the real app, not a drawing of it. This
 # script makes that cheap: it drives a connected Android device over adb,
@@ -13,7 +13,7 @@
 set -euo pipefail
 
 OUT="${1:-./screens-raw}"
-PKG="com.sumnora.gora.v2"
+PKG="com.sumnora.gimik"
 DEVICE="${ANDROID_SERIAL:-$(adb devices | awk 'NR==2{print $1}')}"
 
 if [ -z "$DEVICE" ]; then echo "No device. Plug a phone in and enable USB debugging." >&2; exit 1; fi
@@ -35,7 +35,7 @@ demo() {
 }
 
 grab() {  # grab <deep-link path> <output name>
-  adb -s "$DEVICE" shell am start -a android.intent.action.VIEW -d "gora://$1" "$PKG" >/dev/null 2>&1
+  adb -s "$DEVICE" shell am start -a android.intent.action.VIEW -d "gimik://$1" "$PKG" >/dev/null 2>&1
   adb -s "$DEVICE" shell "sleep 2.5"
   demo
   adb -s "$DEVICE" shell "sleep 0.8"
@@ -56,7 +56,7 @@ grab groups    08-groups
 # Detail screens have generated ids, so they are reached by opening the first
 # row of a list we just deep-linked to. Verify these by eye after a UI change.
 open_first_row() {  # open_first_row <list route> <x> <y> <name>
-  adb -s "$DEVICE" shell am start -a android.intent.action.VIEW -d "gora://$1" "$PKG" >/dev/null 2>&1
+  adb -s "$DEVICE" shell am start -a android.intent.action.VIEW -d "gimik://$1" "$PKG" >/dev/null 2>&1
   adb -s "$DEVICE" shell "sleep 2.5"
   adb -s "$DEVICE" shell input tap "$2" "$3"
   adb -s "$DEVICE" shell "sleep 3"

@@ -19,13 +19,13 @@ const BADGE = {
     src: "/badges/app-store.svg",
     w: 119.66,
     h: 40,
-    alt: "Download Gora on the App Store",
+    alt: "Download Gimik on the App Store",
   },
   google: {
     src: "/badges/google-play.png",
     w: 646,
     h: 250,
-    alt: "Get Gora on Google Play",
+    alt: "Get Gimik on Google Play",
   },
 } as const;
 

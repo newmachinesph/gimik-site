@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with the Gora team.",
+  description: "Get in touch with the Gimik team.",
 };
 
 export default function ContactPage() {

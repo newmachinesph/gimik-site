@@ -10,7 +10,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 export const metadata: Metadata = {
   title: "Support",
   description:
-    "Help with your Gora account: signing in, resetting a password, privacy controls, deleting your account, and how to reach a person.",
+    "Help with your Gimik account: signing in, resetting a password, privacy controls, deleting your account, and how to reach a person.",
   alternates: { canonical: "/support" },
 };
 
@@ -22,7 +22,7 @@ export default function SupportPage() {
           <div className="container-page">
             <SectionHead
               eyebrow="Support"
-              title="Help with Gora."
+              title="Help with Gimik."
               lede="The questions that come up most, answered directly. If yours is not here, write to us and a person will reply."
             />
           </div>

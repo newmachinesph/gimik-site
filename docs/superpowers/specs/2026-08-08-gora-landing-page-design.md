@@ -1,15 +1,15 @@
-# Gora Landing Page — Design Spec
+# Gimik Landing Page — Design Spec
 
 **Date:** 2026-08-08
-**Target:** `getgora.app` marketing site
+**Target:** `gimik.app` marketing site
 **Status:** Approved for planning
 
 ---
 
 ## 1. Product
 
-Gora is a mobile app for turning loose intentions into scheduled plans. People keep a
-list of activities, goals and bucket-list items, then Gora helps them actually put one
+Gimik is a mobile app for turning loose intentions into scheduled plans. People keep a
+list of activities, goals and bucket-list items, then Gimik helps them actually put one
 on the calendar — solo, with one other person, or with a group.
 
 **Slogan:** *Turns "we should do that sometime" into a date on the calendar.*
@@ -185,12 +185,12 @@ serif *"sometime"* to the orange mono *"SAT 14 MAR · 9:00"* once, on load, afte
 title has settled:
 
 ```
-GORA / PLANS WITH PEOPLE YOU LIKE
+GIMIK / PLANS WITH PEOPLE YOU LIKE
 
 We should do
 that ⟨sometime → SAT 14 MAR · 9:00⟩
 
-Gora turns the ideas sitting in your group chat into
+Gimik turns the ideas sitting in your group chat into
 plans with a date on them. Solo, with one person, or
 with everyone.
 
@@ -222,7 +222,7 @@ This is the "a person made this" moment.
 
 ```
 Your group chat has forty good ideas in it.
-None of them have a date. That is the only problem Gora solves.
+None of them have a date. That is the only problem Gimik solves.
 ```
 
 `min-height: 100svh`, `clamp(2rem, 4.5vw, 4rem)`, line-height 1.1, centered measure.
@@ -239,7 +239,7 @@ Exactly three chapters:
 | # | Title | Job |
 |---|---|---|
 | 01 | **Add it** | Anything you have ever said "we should" about goes on your list. Bucket-list items, small things, big things. |
-| 02 | **Match it** | Gora finds who else has it on their list — your friends, your group, the people you actually know. |
+| 02 | **Match it** | Gimik finds who else has it on their list — your friends, your group, the people you actually know. |
 | 03 | **Lock it** | Pick a date everyone can make. It leaves your list and enters your calendar. |
 
 The phone screen goes **blue → blue-with-orange-accent → fully orange** across the

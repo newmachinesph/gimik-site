@@ -8,18 +8,18 @@ import { SiteFooter } from "@/components/SiteFooter";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Why Gora exists, what it refuses to be, and why it starts in the Philippines.",
+    "Why Gimik exists, what it refuses to be, and why it starts in the Philippines.",
   alternates: { canonical: "/about" },
 };
 
 const REFUSALS = [
   {
     title: "Not a dating app",
-    body: "Gora is built around people you already know and groups you are already in. Opening a plan up means people already going can join it — not that you are being introduced to strangers.",
+    body: "Gimik is built around people you already know and groups you are already in. Opening a plan up means people already going can join it — not that you are being introduced to strangers.",
   },
   {
     title: "Not another group chat",
-    body: "Chats are where plans go to be forgotten. Gora attaches the conversation to the plan, so the thread cannot outlive the thing it is about.",
+    body: "Chats are where plans go to be forgotten. Gimik attaches the conversation to the plan, so the thread cannot outlive the thing it is about.",
   },
   {
     title: "Not a productivity tool",
@@ -36,7 +36,7 @@ export default function AboutPage() {
             <SectionHead
               eyebrow="About"
               title="Built for the sentence nobody finishes."
-              lede="“We should do that sometime” is one of the most common things people say to each other, and one of the least likely to happen. Gora exists to close that gap and nothing else."
+              lede="“We should do that sometime” is one of the most common things people say to each other, and one of the least likely to happen. Gimik exists to close that gap and nothing else."
             />
           </div>
         </section>
@@ -54,7 +54,7 @@ export default function AboutPage() {
                   is scarce is the moment someone says a day out loud.
                 </p>
                 <p>
-                  So Gora is not a place to collect intentions beautifully. The
+                  So Gimik is not a place to collect intentions beautifully. The
                   list is only there to make the next step possible: seeing that
                   someone else already wants the same thing, and putting a date
                   on it while you both still have the nerve.
@@ -77,7 +77,7 @@ export default function AboutPage() {
         <section className="border-y border-rule bg-paper-sunk">
           <div className="container-page py-[clamp(72px,9vw,120px)]">
             <Reveal>
-              <SectionHead eyebrow="What it is not" title="Three things Gora refuses to be." />
+              <SectionHead eyebrow="What it is not" title="Three things Gimik refuses to be." />
             </Reveal>
             <div className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-3">
               {REFUSALS.map((item, i) => (
@@ -95,7 +95,7 @@ export default function AboutPage() {
             <SectionHead
               eyebrow="Where it starts"
               title="The Philippines first, properly."
-              lede="Not a soft launch in a market nobody is watching. Gora is built and tested here — the cities in it are Cebu, Quezon City, Taguig, Makati and Davao, the people in it speak Cebuano, Filipino and English, and the servers sit close enough that the app feels local because it is."
+              lede="Not a soft launch in a market nobody is watching. Gimik is built and tested here — the cities in it are Cebu, Quezon City, Taguig, Makati and Davao, the people in it speak Cebuano, Filipino and English, and the servers sit close enough that the app feels local because it is."
             />
             <p className="mt-8 text-[16px] text-ink-muted">
               More countries follow.{" "}

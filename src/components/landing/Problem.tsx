@@ -24,7 +24,7 @@ export function Problem() {
           <p className="mx-auto mt-10 max-w-[54ch] text-center text-[17px] leading-[1.7] text-paper/70">
             The ideas survive. They sit in group chats, in notes apps, in the
             back of a conversation you had two years ago. What never happens is
-            the part where someone picks a day. Gora is the app for that part.
+            the part where someone picks a day. Gimik is the app for that part.
           </p>
         </Reveal>
       </div>

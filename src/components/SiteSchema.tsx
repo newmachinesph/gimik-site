@@ -49,7 +49,7 @@ export function SiteSchema() {
         priceCurrency: "USD",
         availability: "https://schema.org/PreOrder",
       },
-      // GEO: the market Gora launches in, named as a country so a regional
+      // GEO: the market Gimik launches in, named as a country so a regional
       // query can match rather than guessing from the .app domain.
       areaServed: {
         "@type": "Country",

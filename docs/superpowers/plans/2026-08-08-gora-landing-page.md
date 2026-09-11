@@ -1,8 +1,8 @@
-# Gora Landing Page Implementation Plan
+# Gimik Landing Page Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build the getgora.app marketing site — landing page plus `/contact`, `/privacy`, `/terms` — to the approved design spec.
+**Goal:** Build the gimik.app marketing site — landing page plus `/contact`, `/privacy`, `/terms` — to the approved design spec.
 
 **Architecture:** Next.js 16 App Router with one long server-rendered landing page composed of client components for anything animated. All color/motion/layout constants live in `src/styles/tokens.css`; all copy and product data live in `src/data/*`. Animation via `motion/react` only.
 
@@ -40,7 +40,7 @@
 - [ ] **Step 1:** `npm install motion lucide-react` in the repo root.
 - [ ] **Step 2:** Write `tokens.css` with the exact §3.1/§3.3/§3.4 values (copy verbatim from spec).
 - [ ] **Step 3:** Write `index.css`: `@import "tailwindcss";` + `@import "./tokens.css";` + base rules — body `background: var(--paper); color: var(--ink)`; selection in `--sky` @ 30%; global `:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }`; `.mono-label`, `.container-page`; `@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.15s !important; scroll-behavior: auto !important; } }`.
-- [ ] **Step 4:** Rewrite `layout.tsx`: keep Geist/Geist_Mono, add `Instrument_Serif` (`weight: "400", style: "italic", subsets: ["latin"], variable: "--font-serif-accent"`). Metadata: title `Gora — Turns "we should do that sometime" into a date on the calendar`, description from slogan, `metadataBase: new URL("https://getgora.app")`. Body starts with skip link `<a href="#main-content" className="skip-link">Skip to content</a>` (visually hidden until focus, styled in index.css).
+- [ ] **Step 4:** Rewrite `layout.tsx`: keep Geist/Geist_Mono, add `Instrument_Serif` (`weight: "400", style: "italic", subsets: ["latin"], variable: "--font-serif-accent"`). Metadata: title `Gimik — Turns "we should do that sometime" into a date on the calendar`, description from slogan, `metadataBase: new URL("https://gimik.app")`. Body starts with skip link `<a href="#main-content" className="skip-link">Skip to content</a>` (visually hidden until focus, styled in index.css).
 - [ ] **Step 5:** Replace `page.tsx` content with a minimal `<main id="main-content" />` so the build passes.
 - [ ] **Step 6:** `npx tsc --noEmit && npm run build` — expect clean.
 - [ ] **Step 7:** Commit `feat: design tokens, global styles, fonts, base layout`.
@@ -56,10 +56,10 @@
 ```ts
 // site.ts
 export const site = {
-  name: "Gora",
-  url: "https://getgora.app",
+  name: "Gimik",
+  url: "https://gimik.app",
   slogan: 'Turns "we should do that sometime" into a date on the calendar.',
-  contactEmail: "hello@getgora.app",
+  contactEmail: "hello@gimik.app",
   // TODO: replace with real store URLs before launch
   appStoreUrl: "#",
   googlePlayUrl: "#",
@@ -130,7 +130,7 @@ export function Reveal({ children, delay = 0, className }: { children: React.Rea
 
 **Interfaces:**
 - `useScrollProgress()` → `MotionValue<number>` (0–1 document progress; thin wrapper over `useScroll().scrollYProgress`).
-- `SiteHeader` fixed 72px z-60; transparent → `rgba(251,247,240,0.88)` + `backdrop-filter: blur(18px)` + bottom hairline after 48px scroll (background/border/box-shadow transitioned individually, 220ms). 2px `--orange` progress line at bottom via `scaleX` `transform-origin: left` bound to the motion value. Wordmark = text "Gora" + inline SVG mark (orange rounded square with paper dot — same mark as favicon). Anchors: `#how` How it works · `#list` Bucket list · `#modes` Modes (hidden <960px). Right: `Get the app` → `#get`.
+- `SiteHeader` fixed 72px z-60; transparent → `rgba(251,247,240,0.88)` + `backdrop-filter: blur(18px)` + bottom hairline after 48px scroll (background/border/box-shadow transitioned individually, 220ms). 2px `--orange` progress line at bottom via `scaleX` `transform-origin: left` bound to the motion value. Wordmark = text "Gimik" + inline SVG mark (orange rounded square with paper dot — same mark as favicon). Anchors: `#how` How it works · `#list` Bucket list · `#modes` Modes (hidden <960px). Right: `Get the app` → `#get`.
 - `NavDrawer({ open, onClose })` — <960px; focus trap (loop Tab within), closes on Escape + backdrop click, restores focus to hamburger trigger; anchors + store buttons inside; slides in with transform, 300ms `--ease-out`.
 
 - [ ] **Step 1:** Write hook + header + drawer.
@@ -162,7 +162,7 @@ useEffect(() => {
 // AnimatePresence crossfade; slot carries aria-label="sometime — now a real date"
 ```
 
-- [ ] **Step 1:** Write `Hero.tsx` with the §4.1 copy verbatim (eyebrow `GORA — PLANS WITH PEOPLE YOU LIKE`, sub-paragraph from spec, StoreButtons with QR on desktop).
+- [ ] **Step 1:** Write `Hero.tsx` with the §4.1 copy verbatim (eyebrow `GIMIK — PLANS WITH PEOPLE YOU LIKE`, sub-paragraph from spec, StoreButtons with QR on desktop).
 - [ ] **Step 2:** Mount in `page.tsx`. Dev check: choreography order, swap at ~1.4s, no layout shift when slot swaps, fits 1280×800 without scroll.
 - [ ] **Step 3:** `npx tsc --noEmit`. Commit `feat: hero`.
 
@@ -172,7 +172,7 @@ useEffect(() => {
 - Create: `src/components/Manifesto.tsx`
 
 **Interfaces:**
-- Copy (fixed): `Your group chat has forty good ideas in it. None of them have a date. That is the only problem Gora solves.`
+- Copy (fixed): `Your group chat has forty good ideas in it. None of them have a date. That is the only problem Gimik solves.`
 - `min-height: 100svh` centered; type `clamp(2rem, 4.5vw, 4rem)` lh 1.1. Split into words; each word's opacity maps 0.18→1 from `useScroll({ target, offset: ["start 0.8", "end 0.45"] })` progress, word *i* of *n* fully on at `i/n` (`useTransform` per word). All words stay ink — no color cycling.
 - Screen readers get one sentence: the `<p>` carries `aria-label` with the full copy; word spans are `aria-hidden`.
 - Reduced motion: static paragraph, single 150ms fade.
@@ -267,7 +267,7 @@ export function useDragToSchedule(initial: SomedayCard[], days: DayCell[]): {
 
 **Interfaces:**
 - `GetTheApp` — `id="get"`. The single large orange field: card radius 32px, padding `clamp(32px, 4vw, 64px)`, `--orange` bg, **`--ink` text**. Head `Stop saying sometime.` (display scale), `StoreButtons tone="onOrange"`, QR desktop only.
-- `SiteFooter` — oversized outline wordmark (`-webkit-text-stroke: 1px var(--rule)`, transparent fill, `clamp(4rem, 14vw, 12rem)`, `aria-hidden`, with a visually-hidden real heading), link columns `repeat(auto-fit, minmax(160px, 1fr))` gap `clamp(32px,3vw,48px)`: Product (#how/#list/#modes/#get) · Company (/contact) · Legal (/privacy, /terms). Copyright `© 2026 Gora`, hairline-separated, `margin-top: 56px; padding-top: 32px`.
+- `SiteFooter` — oversized outline wordmark (`-webkit-text-stroke: 1px var(--rule)`, transparent fill, `clamp(4rem, 14vw, 12rem)`, `aria-hidden`, with a visually-hidden real heading), link columns `repeat(auto-fit, minmax(160px, 1fr))` gap `clamp(32px,3vw,48px)`: Product (#how/#list/#modes/#get) · Company (/contact) · Legal (/privacy, /terms). Copyright `© 2026 Gimik`, hairline-separated, `margin-top: 56px; padding-top: 32px`.
 
 - [ ] **Step 1:** Write both, extend StoreButtons; mount; dev check.
 - [ ] **Step 2:** `npx tsc --noEmit`. Commit `feat: cta and footer`.
@@ -293,8 +293,8 @@ export function useDragToSchedule(initial: SomedayCard[], days: DayCell[]): {
 - Create: `src/app/contact/page.tsx`, `src/components/ContactForm.tsx`
 
 **Interfaces:**
-- `ContactForm` — client component. Fields name/email/message, labels always visible, inputs on `--paper-sunk`, 44px targets. Client validation (required; email regex `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`), inline errors tied via `aria-describedby` + `aria-invalid`. Submit builds `mailto:${site.contactEmail}?subject=...&body=...` with `encodeURIComponent`, sets `window.location.href`. Button label: **`Open in your mail app`**. Below the form: plain link `Or email hello@getgora.app directly`.
-- Page imports `SiteHeader` via root layout automatically; imports `SiteFooter` directly. Metadata title `Contact — Gora`.
+- `ContactForm` — client component. Fields name/email/message, labels always visible, inputs on `--paper-sunk`, 44px targets. Client validation (required; email regex `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`), inline errors tied via `aria-describedby` + `aria-invalid`. Submit builds `mailto:${site.contactEmail}?subject=...&body=...` with `encodeURIComponent`, sets `window.location.href`. Button label: **`Open in your mail app`**. Below the form: plain link `Or email hello@gimik.app directly`.
+- Page imports `SiteHeader` via root layout automatically; imports `SiteFooter` directly. Metadata title `Contact — Gimik`.
 
 - [ ] **Step 1:** Write page + form.
 - [ ] **Step 2:** Dev check validation + mailto composition. `npx tsc --noEmit`. Commit `feat: contact page`.
@@ -313,7 +313,7 @@ export function useDragToSchedule(initial: SomedayCard[], days: DayCell[]): {
 ### Task 15: Icon + OG card
 
 **Files:**
-- Create: `src/app/icon.svg` (Gora mark: paper rounded square, orange dot landing on a horizontal rule — "a date on the calendar"), `src/app/apple-icon.tsx` (`ImageResponse` 180×180 from the same mark), `src/app/opengraph-image.tsx` (`ImageResponse` 1200×630: paper ground, `We should do that` + serif *sometime* → mono `SAT 14 MAR` in orange-deep, wordmark bottom-left).
+- Create: `src/app/icon.svg` (Gimik mark: paper rounded square, orange dot landing on a horizontal rule — "a date on the calendar"), `src/app/apple-icon.tsx` (`ImageResponse` 180×180 from the same mark), `src/app/opengraph-image.tsx` (`ImageResponse` 1200×630: paper ground, `We should do that` + serif *sometime* → mono `SAT 14 MAR` in orange-deep, wordmark bottom-left).
 - All authored in code — no AI image generation needed; if photographic OG is ever wanted, codex bridge only.
 
 - [ ] **Step 1:** Author the three files with `export const size`/`contentType` where applicable.

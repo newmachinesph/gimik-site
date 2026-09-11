@@ -5,7 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { SectionHead, Stage } from "@/components/site/kit";
 
 /**
- * The half of Gora the old site never mentioned: threads, groups, and the
+ * The half of Gimik the old site never mentioned: threads, groups, and the
  * record a plan leaves behind. Shown compactly here and in full on /features,
  * both from the same data.
  */
@@ -44,7 +44,7 @@ export function MoreThanList() {
             href="/features"
             className="mt-14 inline-flex min-h-[52px] items-center rounded-full bg-ink px-8 text-[16px] font-semibold text-paper transition-transform duration-[160ms] hover:-translate-y-0.5"
           >
-            Everything Gora does
+            Everything Gimik does
           </Link>
         </Reveal>
       </div>

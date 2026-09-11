@@ -5,7 +5,7 @@ import { Stage } from "./site/kit";
 
 /**
  * The whole pitch in one screen: the sentence everybody says, and the thing
- * Gora turns it into.
+ * Gimik turns it into.
  *
  * The two halves are deliberately unequal. The sentence is set in the display
  * face and the word "sometime" in the serif accent, because "sometime" is the
@@ -42,7 +42,7 @@ export function Hero() {
           </p>
 
           <p className="mt-8 max-w-[46ch] text-[17px] leading-[1.65] text-ink-muted">
-            Gora is for the plans you keep meaning to make. Keep the things you
+            Gimik is for the plans you keep meaning to make. Keep the things you
             want to do, see who already wants the same, and give one of them a
             day. That is the entire app.
           </p>

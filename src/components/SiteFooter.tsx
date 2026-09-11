@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NAV_LINKS, site } from "@/data/site";
-import { GoraLockup } from "./GoraLockup";
+import { GimikLockup } from "./GimikLockup";
 
 // NAV_LINKS are already absolute routes, so they are used as-is. They used to
 // be in-page anchors that needed a "/" prefix; keeping that prefix here after
@@ -35,16 +35,16 @@ export function SiteFooter() {
   return (
     <footer className="overflow-hidden border-t border-rule">
       <div className="container-page pb-10 pt-16">
-        <h2 className="sr-only">Gora</h2>
+        <h2 className="sr-only">Gimik</h2>
         {/* Wordmark scene — mini people ticking off their bucket lists in the
             letters. Background is flattened to exactly var(--paper) so the
             image sits seamlessly on the footer. */}
         <Image
-          src="/brand/gora-footer.webp"
+          src="/brand/gimik-footer.webp"
           alt=""
           aria-hidden="true"
-          width={1532}
-          height={936}
+          width={1280}
+          height={800}
           className="mx-auto w-full max-w-[980px] select-none"
         />
 
@@ -56,7 +56,7 @@ export function SiteFooter() {
           }}
         >
           <div>
-            <GoraLockup />
+            <GimikLockup />
             <p className="mt-4 max-w-[28ch] text-[15px] leading-[1.65] text-ink-muted">
               {site.slogan}
             </p>
@@ -84,7 +84,7 @@ export function SiteFooter() {
           className="flex flex-wrap items-center justify-between gap-4 border-t border-rule"
           style={{ marginTop: 56, paddingTop: 32 }}
         >
-          <p className="text-[13px] text-ink-muted">© 2026 Gora</p>
+          <p className="text-[13px] text-ink-muted">© 2026 Gimik</p>
           <p className="mono-label text-ink-muted">{site.url.replace("https://", "")}</p>
         </div>
       </div>

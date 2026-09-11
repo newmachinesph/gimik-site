@@ -10,7 +10,7 @@ export type Feature = {
 };
 
 /**
- * What Gora actually does, in the order a person meets it.
+ * What Gimik actually does, in the order a person meets it.
  *
  * Every claim here is checked against the shipping build and against the
  * capture named in `shot` — if a bullet is not visible in the app, it does not
@@ -34,7 +34,7 @@ export const FEATURES: readonly Feature[] = [
     id: "match",
     eyebrow: "02 — Match",
     title: "See who already wants the same thing.",
-    body: "The overlap between your list and the people you know was always there. Gora is just the first thing that shows it to you — so the ask stops being “would you ever want to…” and starts being “you already do”.",
+    body: "The overlap between your list and the people you know was always there. Gimik is just the first thing that shows it to you — so the ask stops being “would you ever want to…” and starts being “you already do”.",
     points: [
       "See which friends kept the same someday",
       "Ask one person, or open it to a group",
@@ -70,7 +70,7 @@ export const FEATURES: readonly Feature[] = [
     id: "groups",
     eyebrow: "05 — Groups",
     title: "For the people you always mean to see.",
-    body: "A group is a small standing cast — the ones you keep saying you should do something with. Share a link to bring people in, then let Gora surface the somedays the group already has in common.",
+    body: "A group is a small standing cast — the ones you keep saying you should do something with. Share a link to bring people in, then let Gimik surface the somedays the group already has in common.",
     points: [
       "Start a group and invite by link",
       "See what the group shares",

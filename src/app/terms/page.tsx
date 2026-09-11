@@ -4,7 +4,7 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "The terms for using Gora.",
+  description: "The terms for using Gimik.",
 };
 
 export default function TermsPage() {
@@ -13,7 +13,7 @@ export default function TermsPage() {
       <section>
         <h2>The service</h2>
         <p>
-          Gora is a mobile app for keeping a list of activities and bucket-list
+          Gimik is a mobile app for keeping a list of activities and bucket-list
           items and turning them into scheduled plans — alone, with one other
           person, or with a group. These terms apply to the app and to this
           website.
@@ -39,7 +39,7 @@ export default function TermsPage() {
       <section>
         <h2>Acceptable use</h2>
         <ul>
-          <li>Do not use Gora to harm, harass, or deceive other people.</li>
+          <li>Do not use Gimik to harm, harass, or deceive other people.</li>
           <li>Do not attempt to break, probe, or overload the service.</li>
           <li>Do not scrape or resell the service or its data.</li>
         </ul>
@@ -47,7 +47,7 @@ export default function TermsPage() {
       <section>
         <h2>Plans happen in the real world</h2>
         <p>
-          Gora helps you schedule activities; it does not run them. Use your own
+          Gimik helps you schedule activities; it does not run them. Use your own
           judgment about the activities you plan and the people you plan them
           with. To the extent the law allows, we are not liable for what happens
           at activities arranged through the app.
@@ -56,7 +56,7 @@ export default function TermsPage() {
       <section>
         <h2>Ending things</h2>
         <p>
-          You can stop using Gora and delete your account at any time. We can
+          You can stop using Gimik and delete your account at any time. We can
           suspend or close accounts that break these terms. We may update these
           terms; if we make material changes we will tell you in the app before
           they take effect.

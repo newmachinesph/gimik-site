@@ -5,11 +5,11 @@ export const NAV_LINKS = [
 ] as const;
 
 export const site = {
-  name: "Gora",
-  url: "https://getgora.app",
+  name: "Gimik",
+  url: "https://gimik.app",
   slogan: 'Turns "we should do that sometime" into a date on the calendar.',
-  contactEmail: "hello@getgora.app",
-  supportEmail: "support@getgora.app",
+  contactEmail: "hello@gimik.app",
+  supportEmail: "support@gimik.app",
 
   /**
    * Set these the day each listing goes live. While they are "#", StoreButtons
@@ -20,7 +20,7 @@ export const site = {
   googlePlayUrl: "#",
 
   /**
-   * Where Gora launches. The Philippines is not a hedge — it is where the
+   * Where Gimik launches. The Philippines is not a hedge — it is where the
    * product is built and tested, and it decides everything from which cities
    * autocomplete to which region the servers sit in.
    */
@@ -31,33 +31,33 @@ export const site = {
  * Answer-engine fodder: each pair is one question a person actually types and
  * the shortest true answer. Rendered as visible copy on the page and mirrored
  * into FAQPage structured data — an assistant that quotes one of these should
- * end up saying something Gora would stand behind.
+ * end up saying something Gimik would stand behind.
  *
  * Every answer here must be true of the shipping build. Nothing aspirational.
  */
 export const faqs = [
   {
-    q: "What is Gora?",
-    a: "Gora is an app for the plans you keep meaning to make. You write down anything you have said “we should do that” about. Gora shows you who else wants the same thing. It becomes real the moment you give it a date.",
+    q: "What is Gimik?",
+    a: "Gimik is an app for the plans you keep meaning to make. You write down anything you have said “we should do that” about. Gimik shows you who else wants the same thing. It becomes real the moment you give it a date.",
   },
   {
-    q: "How is Gora different from a group chat or a shared note?",
-    a: "A chat loses the idea and a note never gets a date. Gora keeps the idea, shows the overlap between people, and turns it into a plan with a day on it — then gives that plan its own thread, so the conversation lives with the date instead of scrolling away.",
+    q: "How is Gimik different from a group chat or a shared note?",
+    a: "A chat loses the idea and a note never gets a date. Gimik keeps the idea, shows the overlap between people, and turns it into a plan with a day on it — then gives that plan its own thread, so the conversation lives with the date instead of scrolling away.",
   },
   {
-    q: "Do I need friends on Gora for it to be useful?",
+    q: "Do I need friends on Gimik for it to be useful?",
     a: "No. A new account works alone. You browse a catalogue of somedays, keep the ones you want, and lock a date on your own. Matching adds to that once people you know join.",
   },
   {
-    q: "Is Gora free?",
-    a: "Yes. Gora is free. There is no subscription, no paid tier, and nothing to buy inside the app.",
+    q: "Is Gimik free?",
+    a: "Yes. Gimik is free. There is no subscription, no paid tier, and nothing to buy inside the app.",
   },
   {
     q: "Who can see what I add?",
     a: "You choose per someday. Every one carries a ring — just you, friends, your groups, or everyone — and you can change it at any time. Your journal entries are private unless you share one.",
   },
   {
-    q: "Can I message people in Gora?",
+    q: "Can I message people in Gimik?",
     a: "Yes. Every locked plan gets its own thread, groups have their own, and you can message a friend directly. Messages arrive in real time.",
   },
   {
@@ -69,7 +69,7 @@ export const faqs = [
     a: "Yes, from Settings, without emailing anyone. Deleting removes your profile, your somedays, your plans and your messages.",
   },
   {
-    q: "Where is Gora available?",
-    a: "Gora launches in the Philippines, on iPhone and Android, in English. More countries follow.",
+    q: "Where is Gimik available?",
+    a: "Gimik launches in the Philippines, on iPhone and Android, in English. More countries follow.",
   },
 ] as const;

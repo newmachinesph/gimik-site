@@ -4,7 +4,7 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How Gora handles your data.",
+  description: "How Gimik handles your data.",
 };
 
 export default function PrivacyPage() {
@@ -13,7 +13,7 @@ export default function PrivacyPage() {
       <section>
         <h2>What we collect</h2>
         <p>
-          When you use Gora, we collect the information you give us directly:
+          When you use Gimik, we collect the information you give us directly:
           your account details (name, email address), the activities and
           bucket-list items you add, the plans you make, and the friends and
           groups you connect with. We also collect basic device information

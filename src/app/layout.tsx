@@ -31,13 +31,13 @@ const instrumentSerif = Instrument_Serif({
 const GA_MEASUREMENT_ID = "G-BPSXSPM3EE";
 
 const TITLE =
-  'Gora — Turns "we should do that sometime" into a date on the calendar';
+  'Gimik — Turns "we should do that sometime" into a date on the calendar';
 const DESCRIPTION =
-  "Gora turns the ideas sitting in your group chat into plans with a date on them. Bucket-list items, small things, big things — solo, with one person, or with everyone.";
+  "Gimik turns the ideas sitting in your group chat into plans with a date on them. Bucket-list items, small things, big things — solo, with one person, or with everyone.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: TITLE, template: "%s — Gora" },
+  title: { default: TITLE, template: "%s — Gimik" },
   description: DESCRIPTION,
   applicationName: site.name,
   category: "lifestyle",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gora — plans with people you like",
+    title: "Gimik — plans with people you like",
     description:
       "Write down the things you keep meaning to do, see who else wants the same, and give one a date.",
   },

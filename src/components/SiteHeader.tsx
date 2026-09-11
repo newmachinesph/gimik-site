@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion, useMotionValueEvent } from "motion/react";
 import { useRef, useState } from "react";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
-import { GoraLockup } from "./GoraLockup";
+import { GimikLockup } from "./GimikLockup";
 import { NavDrawer } from "./NavDrawer";
 import { NAV_LINKS } from "@/data/site";
 
@@ -46,9 +46,9 @@ export function SiteHeader() {
         <Link
           href="/"
           className="-my-2 flex items-center py-2"
-          aria-label="Gora — home"
+          aria-label="Gimik — home"
         >
-          <GoraLockup />
+          <GimikLockup />
         </Link>
 
         <nav aria-label="Site" className="hidden min-[960px]:block">

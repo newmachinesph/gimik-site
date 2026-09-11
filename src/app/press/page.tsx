@@ -10,18 +10,18 @@ import { SiteFooter } from "@/components/SiteFooter";
 export const metadata: Metadata = {
   title: "Press kit",
   description:
-    "Boilerplate descriptions, logos and screenshots for anyone writing about Gora.",
+    "Boilerplate descriptions, logos and screenshots for anyone writing about Gimik.",
   alternates: { canonical: "/press" },
 };
 
 const BOILERPLATE = [
   {
     length: "50 words",
-    text: "Gora is a mobile app for the plans people keep meaning to make. You keep a list of things you want to do, Gora shows you which friends want the same, and a plan becomes real the moment someone gives it a date. It launches in the Philippines on iPhone and Android.",
+    text: "Gimik is a mobile app for the plans people keep meaning to make. You keep a list of things you want to do, Gimik shows you which friends want the same, and a plan becomes real the moment someone gives it a date. It launches in the Philippines on iPhone and Android.",
   },
   {
     length: "25 words",
-    text: "Gora turns “we should do that sometime” into a date on the calendar. Keep what you want to do, see who wants it too, pick a day.",
+    text: "Gimik turns “we should do that sometime” into a date on the calendar. Keep what you want to do, see who wants it too, pick a day.",
   },
   {
     length: "One line",
@@ -30,8 +30,8 @@ const BOILERPLATE = [
 ];
 
 const LOGOS = [
-  { src: "/brand/gora-mark.svg", label: "Mark, colour, SVG" },
-  { src: "/brand/gora-mark-white.svg", label: "Mark, white, SVG" },
+  { src: "/brand/gimik-mark.svg", label: "Mark, colour, SVG" },
+  { src: "/brand/gimik-mark-white.svg", label: "Mark, white, SVG" },
   { src: "/brand/app-icon-color.svg", label: "App icon, SVG" },
 ];
 
@@ -47,7 +47,7 @@ export default function PressPage() {
           <div className="container-page">
             <SectionHead
               eyebrow="Press kit"
-              title="Everything you need to write about Gora."
+              title="Everything you need to write about Gimik."
               lede="Take what you need without asking. If you want something that is not here, email us and we will send it."
             />
           </div>

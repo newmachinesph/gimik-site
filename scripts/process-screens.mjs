@@ -1,7 +1,7 @@
 // Crop the Android navigation bar off each capture and emit webp.
 //
 // screencap gives the whole physical display, which includes the system
-// gesture/button bar at the bottom. That belongs to the phone, not to Gora, so
+// gesture/button bar at the bottom. That belongs to the phone, not to Gimik, so
 // it is cropped away before the image reaches the site. The result is written
 // as webp because these are large flat-colour UI screens and png costs about
 // six times as much for no visible gain.
@@ -12,7 +12,7 @@ import sharp from 'sharp';
 const SRC = process.argv[2] ?? './screens-raw';
 const DEST = './public/app-screens';
 
-// The two bands that belong to the phone rather than to Gora, in device pixels
+// The two bands that belong to the phone rather than to Gimik, in device pixels
 // on the capture device. Both are cropped away: the site renders these captures
 // inside an iPhone chassis, so an Android status bar and gesture bar inside that
 // frame would read as a mistake. The chassis supplies its own status band.

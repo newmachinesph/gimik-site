@@ -8,7 +8,7 @@ import { StoreButtons } from "@/components/StoreButtons";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Features — everything Gora does",
+  title: "Features — everything Gimik does",
   description:
     "Keep the things you mean to do, see who wants the same, and lock a date. Plus threads, groups and the record a plan leaves behind.",
   alternates: { canonical: "/features" },
@@ -26,7 +26,7 @@ export default function FeaturesPage() {
           <div className="container-page">
             <SectionHead
               eyebrow="Features"
-              title="Everything Gora does."
+              title="Everything Gimik does."
               lede="Six things, in the order you meet them. Every screen below is the real app, not a drawing of it."
             />
           </div>

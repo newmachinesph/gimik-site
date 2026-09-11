@@ -43,7 +43,7 @@ export default function FeaturesPage() {
               shot={feature.shot}
               tone={TONES[i]}
               flip={i % 2 === 1}
-              priority={i === 0}
+              preload={i === 0}
             />
           ))}
         </div>

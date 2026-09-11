@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+
+import footerScene from "../../public/brand/gimik-footer.webp";
 import { NAV_LINKS, site } from "@/data/site";
 import { GimikLockup } from "./GimikLockup";
 
@@ -40,11 +42,11 @@ export function SiteFooter() {
             letters. Background is flattened to exactly var(--paper) so the
             image sits seamlessly on the footer. */}
         <Image
-          src="/brand/gimik-footer.webp"
+          src={footerScene}
           alt=""
           aria-hidden="true"
-          width={1280}
-          height={800}
+          sizes="(max-width: 1024px) 100vw, 980px"
+          placeholder="blur"
           className="mx-auto w-full max-w-[980px] select-none"
         />
 

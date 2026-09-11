@@ -97,14 +97,13 @@ export default function PressPage() {
             </p>
             <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-4">
               {SHOT_KEYS.map((key) => (
-                <a key={key} href={APP_SHOTS[key].src} download className="group block">
+                <a key={key} href={APP_SHOTS[key].file} download className="group block">
                   <span className="block overflow-hidden rounded-[18px] border border-rule">
                     <Image
-                      src={APP_SHOTS[key].src}
+                      src={APP_SHOTS[key].img}
                       alt={APP_SHOTS[key].alt}
-                      width={1080}
-                      height={2190}
                       sizes="(max-width: 768px) 45vw, 22vw"
+                      placeholder="blur"
                       className="h-auto w-full"
                     />
                   </span>

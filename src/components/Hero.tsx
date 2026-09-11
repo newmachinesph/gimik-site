@@ -59,7 +59,7 @@ export function Hero() {
           </p>
         </div>
 
-        <Stage shot="activity" tone="orange" scale={0.78} priority />
+        <Stage shot="activity" tone="orange" scale={0.78} preload />
       </div>
     </section>
   );

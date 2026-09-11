@@ -8,7 +8,7 @@ export const site = {
   name: "Gimik",
   url: "https://gimik.app",
   slogan: 'Turns "we should do that sometime" into a date on the calendar.',
-  contactEmail: "hello@gimik.app",
+  contactEmail: "support@gimik.app",
   supportEmail: "support@gimik.app",
 
   /**

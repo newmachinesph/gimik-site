@@ -48,9 +48,26 @@ export const SUPPORT_TOPICS = [
         q: "Are my journal entries private?",
         a: "Yes, unless you choose to share one.",
       },
+    ],
+  },
+  {
+    title: "Safety, reporting and blocking",
+    items: [
       {
-        q: "Can I stop someone contacting me?",
-        a: "You can hide a person from your invites and suggestions, and you can report a plan or a person from its own screen.",
+        q: "How do I block someone?",
+        a: "Open their profile and tap Block, or tap the warning icon at the top of your conversation with them. Their somedays, messages and invites disappear from your app straight away, they can no longer reach you, and we are sent a report. You can unblock them in Settings under Blocked people.",
+      },
+      {
+        q: "How do I report a person, a someday or a message?",
+        a: "Tap Report on a person's profile or on a someday somebody wrote. In a conversation, tap the warning icon, or press and hold a message. The person is never told who reported them.",
+      },
+      {
+        q: "What happens after I report something?",
+        a: "A person reviews every report within 24 hours. Gimik has no tolerance for objectionable content or abusive users: content that breaks the rules is removed and the account that posted it is permanently closed.",
+      },
+      {
+        q: "Why was my text refused?",
+        a: "Names, profiles, somedays, group names and messages pass a filter for abusive and explicit language before they are posted. Reword it and try again, or write to us if you think the filter got it wrong.",
       },
     ],
   },

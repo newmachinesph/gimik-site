@@ -3,13 +3,21 @@ import { LegalPage } from "@/components/LegalPage";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "The terms for using Gimik.",
+  title: "Terms of Use (EULA)",
+  description:
+    "The terms of use and end user licence agreement for Gimik, including the zero-tolerance rule on objectionable content and abusive users.",
 };
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms of Service" updated="8 August 2026">
+    <LegalPage title="Terms of Use (EULA)" updated="2 October 2026">
+      <section>
+        <p>
+          These terms are the end user licence agreement (EULA) for Gimik. You
+          agree to them before you create an account or sign in, and you may
+          use the app only while you keep to them.
+        </p>
+      </section>
       <section>
         <h2>The service</h2>
         <p>
@@ -34,6 +42,39 @@ export default function TermsPage() {
           us the limited license we need to store and display them to the
           people you share them with — nothing more. Do not post content that is
           unlawful, harassing, or that you do not have the right to share.
+        </p>
+      </section>
+      <section id="objectionable-content">
+        <h2>No tolerance for objectionable content or abusive users</h2>
+        <p>
+          Gimik has no tolerance for objectionable content or abusive users.
+          This covers everything you write or upload: your name, profile and
+          photos, the somedays you write, group names, and messages.
+        </p>
+        <ul>
+          <li>
+            No content that is hateful, harassing, threatening, sexually
+            explicit, violent, or illegal, and no spam or scams.
+          </li>
+          <li>No bullying, stalking, impersonating, or pressuring another person.</li>
+          <li>
+            Text is filtered automatically, and anything objectionable is
+            refused before it is posted.
+          </li>
+          <li>
+            You can report any person, someday, or message from its own screen,
+            and you can block any person. Blocking removes their content from
+            your app immediately and sends us a report.
+          </li>
+          <li>
+            We review every report within 24 hours. Content that breaks this
+            rule is removed and the account that posted it is permanently
+            closed.
+          </li>
+        </ul>
+        <p>
+          To report something from outside the app, write to{" "}
+          <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
         </p>
       </section>
       <section>
